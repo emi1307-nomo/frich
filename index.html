@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frich 'n Fries · Hamburguesas americanas en Córdoba</title>
+<meta name="description" content="Smash burgers, papas onduladas y canastita bien yankee. Nueva Córdoba, Valle Escondido y Jesús María. 4,4 estrellas con 1.198 opiniones en Google.">
+<meta name="theme-color" content="#E03127">
+<!-- version de muestra: que Google no la indexe hasta que Frich la apruebe (borrar esta linea al publicarla oficialmente) -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23E03127'/%3E%3Cpath d='M7 18h18M7 18a9 6 0 0 1 18 0M9 22h14' stroke='%23FBF3E4' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/hero-600.webp" imagesrcset="assets/hero-600.webp 600w, assets/hero-960.webp 960w" imagesizes="(min-width:980px) 480px, 80vw" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{
+  --cream:#FBF3E4;
+  --cream-deep:#F3E6CE;
+  --ink:#1E1713;
+  --ink-soft:#5C4F45;
+  --red:#E03127;
+  --red-deep:#B8231B;
+  --teal:#2FA3B8;
+  --teal-deep:#1E7F92;
+  --mustard:#F2C14E;
+  --display:'Anton',Impact,sans-serif;
+  --script:'Pacifico',cursive;
+  --body:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;line-height:.95;
+  letter-spacing:.005em;text-transform:uppercase;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+::selection{background:var(--red);color:var(--cream)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;background:var(--red);color:var(--cream);padding:10px 16px;z-index:200}
+.skip:focus{left:0;top:0}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+.script{font-family:var(--script);text-transform:none;letter-spacing:0;line-height:1.1}
+
+/* lunares y damero, el patron del genero */
+.dots{background-image:radial-gradient(var(--cream-deep) 2.2px,transparent 2.3px);
+  background-size:16px 16px}
+/* damero rojo y blanco, el patron que ellos ya usan en sus piezas */
+.checker{height:20px;background:
+  repeating-linear-gradient(90deg,var(--red) 0 20px,#fff 20px 40px),
+  repeating-linear-gradient(90deg,#fff 0 20px,var(--red) 20px 40px);
+  background-size:40px 20px;background-position:0 0,0 10px;background-repeat:repeat-x}
+
+/* ---------- boton ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;
+  padding:15px 30px;border-radius:999px;text-decoration:none;cursor:pointer;border:3px solid var(--red);
+  background:var(--red);color:var(--cream);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}
+.btn:hover{background:var(--red-deep);border-color:var(--red-deep);
+  transform:translateY(-2px);box-shadow:0 10px 0 -2px rgba(30,23,19,.18)}
+.btn .ar{transition:transform .25s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn.teal{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.teal:hover{background:var(--teal-deep);border-color:var(--teal-deep)}
+.btn.sm{padding:11px 20px;font-size:12px}
+@media(pointer:coarse){.btn{min-height:46px}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:12px 0 auto;z-index:70;padding:0 max(3vw,14px)}
+.navin{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:#fff;border:3px solid var(--ink);border-radius:999px;padding:9px 12px 9px 22px;
+  box-shadow:0 6px 0 -1px rgba(30,23,19,.14);max-width:1200px;margin-inline:auto}
+.logo{display:flex;align-items:center;gap:9px;min-height:44px;min-width:44px;text-decoration:none;flex-shrink:0}
+.logo .mark{width:34px;height:34px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex-shrink:0}
+.logo .mark svg{width:20px;height:20px}
+/* logo al estilo del suyo: manuscrita roja con la bajada condensada */
+.logo b{display:flex;align-items:center;gap:8px;font-weight:400}
+.logo .logoimg{height:34px;width:auto;display:block;flex-shrink:0}
+footer.site .logo .logoimg{height:42px}
+@media(max-width:600px){.logo .logoimg{height:28px}}
+.logo .scr{font-family:var(--script);font-size:25px;color:var(--red);line-height:1;padding-bottom:2px}
+.logo i{font-family:var(--display);font-style:normal;font-size:12px;letter-spacing:.15em;color:var(--ink)}
+footer.site .logo .scr{color:#fff}
+footer.site .logo i{color:var(--cream)}
+.navlinks{display:none;gap:26px;font-size:14.5px;font-weight:500}
+.navlinks a{text-decoration:none;position:relative;padding:4px 0}
+.navlinks a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:var(--red);border-radius:3px;transform:scaleX(0);transition:transform .28s var(--ease)}
+.navlinks a:hover::after{transform:scaleX(1)}
+@media(min-width:960px){.navlinks{display:flex}}
+
+/* ---------- hero ---------- */
+.hero{padding:130px 0 60px;position:relative;overflow:hidden}
+.heroin{display:grid;gap:34px;grid-template-columns:1fr;align-items:center}
+@media(min-width:980px){.heroin{grid-template-columns:1.02fr .98fr;gap:40px;padding-block:24px}}
+.hero .script{color:var(--teal);font-size:clamp(1.9rem,4.6vw,3.4rem);transform:rotate(-3deg);
+  transform-origin:left center;margin-bottom:2px}
+.hero h1{font-size:clamp(2.7rem,8.4vw,6rem);max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--red);display:block}
+.hero .lede{margin-top:20px;max-width:44ch;color:var(--ink-soft);font-size:1.06rem}
+.hero .cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.stars{margin-top:26px;display:inline-flex;align-items:center;gap:11px;background:#fff;
+  border:3px solid var(--ink);border-radius:999px;padding:8px 18px 8px 12px;font-size:14px;font-weight:500}
+.stars b{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+.stars .s{color:var(--mustard);letter-spacing:.06em}
+
+/* soporte de foto del hero */
+.heroart{position:relative;display:grid;place-items:center;min-height:320px}
+.heroart .disc{position:absolute;width:min(92%,520px);aspect-ratio:1;border-radius:50%;
+  background:var(--cream-deep);background-image:radial-gradient(#e6d4b4 2.6px,transparent 2.7px);
+  background-size:19px 19px}
+.heroart .ph{position:relative;width:min(88%,480px);aspect-ratio:1}
+
+/* espacio reservado de foto, se ve intencional hasta que llegue la real */
+.ph{display:grid;place-items:center;border-radius:18px;overflow:hidden;
+  background:var(--cream-deep);border:3px dashed #d9c39a;color:#a8906a}
+.ph.round{border-radius:50%}
+.ph span{font-family:var(--display);font-size:13px;letter-spacing:.14em;text-align:center;padding:10px}
+.ph img{width:100%;height:100%;object-fit:contain;display:block}
+.ph.has{border-style:solid;border-color:var(--ink);background:#fff}
+.heroart .ph.has{border:none;background:none}
+
+/* nombre en manuscrita roja, como en sus propias piezas */
+.card h3{font-family:var(--script);font-size:1.75rem;color:var(--red);
+  text-transform:none;letter-spacing:0;line-height:1.15}
+.price{font-family:var(--display);font-size:1.45rem;letter-spacing:.01em}
+.incl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;background:var(--red);color:#fff;border-radius:6px;padding:4px 9px;margin-top:10px}
+
+/* la carta completa */
+.carta{display:grid;gap:40px;grid-template-columns:1fr;margin-top:50px}
+@media(min-width:900px){.carta{grid-template-columns:1fr 1fr;gap:40px 54px}}
+.cgroup h3{font-family:var(--script);color:var(--red);font-size:2rem;
+  text-transform:none;letter-spacing:0;margin-bottom:10px}
+.cgroup .note{font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-deep);margin-bottom:8px}
+.citem{display:flex;gap:16px;align-items:baseline;justify-content:space-between;
+  padding:13px 0;border-bottom:2px dotted #d6c4a4}
+.citem .n{font-family:var(--display);font-size:1.02rem;letter-spacing:.02em;line-height:1.2}
+.citem .ing{display:block;font-family:var(--body);font-size:.85rem;font-weight:400;
+  text-transform:none;letter-spacing:0;color:var(--ink-soft);margin-top:4px;max-width:44ch}
+.citem .p{font-family:var(--display);font-size:1.1rem;color:var(--red);white-space:nowrap}
+
+/* ---------- marquee ---------- */
+.band{background:var(--red);color:var(--cream);padding:15px 0;overflow:hidden;
+  border-block:3px solid var(--ink)}
+.mq{display:flex;width:max-content;animation:mq 26s linear infinite}
+.mq span{font-family:var(--display);font-size:22px;letter-spacing:.06em;padding-inline:20px;
+  display:flex;align-items:center;gap:20px;white-space:nowrap}
+.mq i{font-style:normal;color:var(--mustard)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- secciones ---------- */
+section.blk{padding:clamp(64px,9vw,118px) 0}
+.head{max-width:56ch}
+.head .kick{font-family:var(--script);color:var(--teal);font-size:1.6rem;margin-bottom:4px}
+.head h2{font-size:clamp(2rem,5.4vw,3.8rem)}
+.head p{margin-top:16px;color:var(--ink-soft);max-width:52ch}
+
+/* carrusel de hamburguesas */
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:38px 0 26px;margin-inline:calc((100vw - min(1200px,92vw))/-2);
+  padding-inline:calc((100vw - min(1200px,92vw))/2);scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 min(300px,78vw);scroll-snap-align:start;background:#fff;
+  border:3px solid var(--ink);border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 0 -2px rgba(30,23,19,.16);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 0 -3px rgba(30,23,19,.2)}
+.card .ph{aspect-ratio:4/3;border-radius:0;border-width:0 0 3px;border-style:solid;border-color:var(--ink)}
+.card .cbody{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.5rem}
+.card .desc{margin-top:8px;color:var(--ink-soft);font-size:.95rem;flex:1}
+.card .foot{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tag{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--mustard);border:2px solid var(--ink);border-radius:999px;padding:5px 12px}
+.tag.new{background:var(--teal);color:#fff}
+.railhint{font-size:13px;color:var(--ink-soft);font-weight:500;display:flex;align-items:center;gap:8px}
+
+/* papas / split */
+.split{display:grid;gap:34px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr;gap:56px}}
+.split.rev>*:first-child{order:2}
+@media(max-width:899px){.split.rev>*:first-child{order:0}}
+.split .ph{aspect-ratio:4/3}
+
+.quote{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:26px 28px;
+  box-shadow:0 8px 0 -2px rgba(30,23,19,.14)}
+.quote p{font-size:1.06rem}
+.quote footer{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.quote .s{color:var(--mustard);letter-spacing:.06em;margin-bottom:10px}
+
+.qgrid{display:grid;gap:18px;grid-template-columns:1fr;margin-top:38px}
+@media(min-width:800px){.qgrid{grid-template-columns:repeat(3,1fr)}}
+
+/* sucursales */
+.shops{display:grid;gap:18px;grid-template-columns:1fr;margin-top:38px}
+@media(min-width:800px){.shops{grid-template-columns:repeat(3,1fr)}}
+.shop{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:24px 26px;
+  box-shadow:0 8px 0 -2px rgba(30,23,19,.14)}
+.shop h3{font-size:1.3rem;color:var(--red)}
+.shop .addr{margin-top:8px;color:var(--ink-soft);font-size:.95rem}
+.shop .hrs{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+
+/* sucursales con foto real */
+.shop{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.shop .foto{aspect-ratio:16/10;border-bottom:3px solid var(--ink);overflow:hidden;background:var(--cream-deep)}
+.shop .foto img{width:100%;height:100%;object-fit:cover;display:block;transition:scale .6s var(--ease)}
+@media(hover:hover){.shop:hover .foto img{scale:1.05}}
+.shop .sb{padding:20px 24px 24px;display:flex;flex-direction:column;flex:1}
+.shop .acts{margin-top:auto;padding-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.shop .tel{margin-top:2px;color:var(--ink-soft);font-size:.95rem}
+.shop .hrs+.hrs{margin-top:4px}
+
+/* nosotros: fotos reales armadas como collage de polaroids */
+.crew{display:grid;gap:44px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.crew{grid-template-columns:1.05fr .95fr;gap:64px}}
+.crew .head p+p{margin-top:12px}
+.collage{position:relative}
+.snap{background:#fff;border:3px solid var(--ink);border-radius:6px;padding:10px 10px 0;margin:0;
+  box-shadow:0 10px 0 -2px rgba(30,23,19,.16);transition:rotate .5s var(--ease),scale .5s var(--ease)}
+.snap .ph-in{overflow:hidden;background:var(--cream-deep);border-radius:2px}
+.snap img{display:block;width:100%;height:100%;object-fit:cover}
+.snap figcaption{font-family:var(--script);color:var(--red);font-size:1.15rem;line-height:1.2;
+  text-align:center;padding:7px 4px 10px}
+.snap.eq .ph-in{aspect-ratio:5/7}
+.snap.ne .ph-in{aspect-ratio:4/5}
+.snap.am .ph-in{aspect-ratio:16/9}
+@media(min-width:900px){
+  .collage{aspect-ratio:1/1.06}
+  .collage .snap{position:absolute}
+  .snap.eq{left:0;top:2%;width:52%;rotate:-3deg;z-index:2}
+  .snap.ne{right:3%;top:0;width:38%;rotate:4deg;z-index:1}
+  .snap.am{right:0;bottom:0;width:58%;rotate:2deg;z-index:3}
+}
+@media(max-width:899px){
+  .collage{display:grid;gap:22px;justify-items:center}
+  .snap.eq{width:min(78%,360px);rotate:-2deg}
+  .snap.am{width:100%;rotate:1.5deg}
+  .snap.ne{display:none}
+}
+@media(hover:hover){.collage .snap:hover{rotate:0deg;scale:1.03;z-index:5}}
+
+/* franquicias */
+.franq{background:var(--red);color:#fff}
+.franq .head .kick{color:var(--mustard)}
+.franq .head p{color:rgba(255,255,255,.93)}
+.fwrap{display:grid;gap:48px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.fwrap{grid-template-columns:1.12fr .88fr;gap:64px}}
+.facts{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;font-weight:500}
+.facts li{display:flex;gap:12px;align-items:baseline}
+.facts li::before{content:"\2605";color:var(--mustard);flex-shrink:0}
+.fcta{margin-top:30px;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:20px;
+  padding:24px 26px;box-shadow:0 10px 0 -2px rgba(30,23,19,.28)}
+.fcta .fnote{font-weight:500}
+.fcta .btn{margin-top:18px}
+.fcta .fine{margin-top:14px;font-size:13px;color:var(--ink-soft)}
+.btn.mustard{background:var(--mustard);border-color:var(--ink);color:var(--ink)}
+.btn.mustard:hover{background:#F6CF6A;border-color:var(--ink)}
+.franq .snap.pk{width:min(100%,380px);margin-inline:auto;rotate:3deg;color:var(--ink)}
+.franq .snap.pk .ph-in{aspect-ratio:4/5}
+@media(max-width:899px){.franq .snap.pk{width:min(80%,320px);order:-1}}
+
+/* cta final */
+.final{background:var(--teal);border-block:3px solid var(--ink);color:#fff;position:relative;overflow:hidden}
+.final .inner{padding:clamp(56px,8vw,96px) 0;text-align:center;position:relative;z-index:2}
+.final .script{color:var(--mustard);font-size:clamp(1.7rem,4vw,2.8rem)}
+.final h2{font-size:clamp(2.2rem,6.6vw,4.6rem);margin-top:4px}
+.final p{margin:18px auto 0;max-width:46ch;opacity:.95}
+.final .cta{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final .btn.ghost{color:#fff;border-color:#fff}
+.final .btn.ghost:hover{background:#fff;color:var(--teal-deep)}
+.final .apps{margin-top:20px;font-size:15px}
+.final .locs{margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.final .apps a{color:#fff;font-weight:700;text-underline-offset:3px;display:inline-block;padding:12px 4px;margin:-12px -2px}
+
+footer.site{background:var(--ink);color:var(--cream);padding:46px 0 40px}
+footer.site .fx{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+footer.site a{color:var(--cream)}
+footer.site .small a{display:inline-block;padding:13px 0;margin:-13px 0}
+footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
+.demo{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  border:2px solid rgba(251,243,228,.35);border-radius:999px;padding:6px 13px}
+
+/* ---------- el local ilustrado con su neón encendido ---------- */
+.storefront{position:relative;border:3px solid var(--ink);border-radius:22px;overflow:hidden;
+  box-shadow:0 10px 0 -2px rgba(30,23,19,.16);background:var(--cream);margin-top:44px}
+.storefront>img{width:100%;height:auto;display:block}
+/* el SVG comparte viewBox con la imagen, asi el neon queda clavado en su sitio
+   sea cual sea el tamano de pantalla */
+.neonlayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.neonlayer .nscript{font-family:var(--script);fill:#FF5A48;font-size:116px;text-anchor:middle;
+  filter:url(#glowRed);animation:flick 6s infinite}
+.neonlayer .vert{font-family:var(--display);fill:var(--red);font-size:30px;filter:url(#glowSoft);
+  text-anchor:middle;letter-spacing:.04em}
+.neonlayer .board{font-family:var(--display);fill:var(--red);font-size:38px;filter:url(#glowSoft);
+  text-anchor:middle;letter-spacing:.13em}
+.neonlayer .wire{fill:none;stroke:#07080D;stroke-width:3.4;stroke-linecap:round}
+.neonlayer .ins{fill:#2A2D3A;stroke:#07080D;stroke-width:2}
+.neonlayer .tw{fill:url(#gStar);opacity:0;animation:tw 4.6s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:.9}}
+.neonlayer .fugaz{opacity:0}
+.neonlayer .lit{fill:#F7ECD4;filter:url(#glowSoft)}
+.neonlayer .bulb{fill:url(#gBulb);animation:bulb 1.5s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.35}94%{opacity:1}96%{opacity:.55}97%{opacity:1}}
+@keyframes bulb{0%,100%{opacity:.5}16%{opacity:1}}
+.sfcap{text-align:center;margin-top:24px}
+.sfcap .s{display:block;font-family:var(--script);color:var(--teal);font-size:1.9rem;line-height:1.2}
+.sfcap .a{display:block;font-family:var(--display);font-size:.85rem;letter-spacing:.16em;margin-top:4px}
+@media(prefers-reduced-motion:reduce){
+  .neonlayer .nscript,.neonlayer .bulb{animation:none;opacity:1}
+}
+
+/* ---------- Papón, la mascota ---------- */
+/* capas: .paponwrap (posición y aparición) > .pp-rig (saltos, giro, inclinación) > svg (respiración) */
+.paponwrap{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pp-rig{transform-origin:50% 100%;rotate:calc(var(--lean,0) * 1deg)}
+.papon{display:block;width:100%;height:auto;overflow:visible;transform-origin:50% 100%;
+  animation:bob 2.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-3.5%) rotate(1.2deg)}}
+.papon .eye{transform-box:fill-box;transform-origin:center;transition:transform .08s ease}
+.papon.blink .eye{transform:scaleY(.08)}
+.papon .pupil{transition:transform .14s ease-out}
+.papon .pp-arm{transform-box:view-box;transform-origin:143px 150px}
+.papon .pp-arml{transform-box:view-box;transform-origin:58px 150px;transition:transform .45s var(--ease)}
+.papon .pp-cheek{opacity:.75;transform-box:fill-box;transform-origin:center;
+  transition:opacity .3s ease,transform .3s var(--ease)}
+.papon .pp-o{opacity:0}
+/* gestos */
+.paponwrap:hover .pp-arm,.paponwrap.wave .pp-arm{animation:wave .72s var(--ease) 2}
+@keyframes wave{0%,100%{transform:rotate(0)}30%{transform:rotate(-28deg)}62%{transform:rotate(10deg)}}
+.paponwrap.point .pp-arml{transform:rotate(62deg)}
+.paponwrap.blush .pp-cheek{opacity:1;transform:scale(1.5)}
+.paponwrap.hop .pp-rig{animation:hop .7s var(--ease)}
+.paponwrap.spin .pp-rig{animation:spin .95s var(--ease)}
+.paponwrap.walking .pp-rig{animation:step .34s ease-in-out infinite}
+@keyframes hop{0%{transform:none}14%{transform:scale(1.12,.86)}42%{transform:translateY(-34%) scale(.94,1.08)}
+  70%{transform:translateY(0) scale(1.1,.9)}84%{transform:scale(.97,1.03)}100%{transform:none}}
+@keyframes spin{0%{transform:none}15%{transform:scale(1.1,.88)}50%{transform:translateY(-40%) rotate(180deg)}
+  82%{transform:translateY(0) rotate(360deg) scale(1.08,.92)}100%{transform:rotate(360deg)}}
+@keyframes step{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7%) rotate(3deg)}}
+/* cuando habla, la boca se abre y se cierra */
+.paponwrap.talk .pp-smile{animation:yapA .32s steps(1) 6}
+.paponwrap.talk .pp-o{animation:yapB .32s steps(1) 6}
+@keyframes yapA{0%{opacity:1}50%{opacity:0}}
+@keyframes yapB{0%{opacity:0}50%{opacity:1}}
+
+/* globo de diálogo */
+.paponwrap .bubble{position:absolute;left:50%;bottom:calc(100% + 2px);
+  width:max-content;max-width:min(250px,64vw);white-space:normal;line-height:1.3;
+  transform:translate(-50%,10px) scale(.88);transform-origin:50% 100%;
+  background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 15px;
+  font-weight:700;font-size:14px;color:var(--ink);text-align:left;opacity:0;pointer-events:none;z-index:6;
+  box-shadow:0 6px 0 -1px rgba(30,23,19,.16);
+  transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.paponwrap .bubble::after{content:"";position:absolute;left:50%;top:100%;
+  transform:translateX(-50%);border:9px solid transparent;border-top-color:var(--ink)}
+.paponwrap.talk .bubble{opacity:1;transform:translate(-50%,0) scale(1)}
+.paponwrap[data-bubble=left] .bubble{left:8%;transform:translate(0,10px) scale(.88);transform-origin:0 100%}
+.paponwrap[data-bubble=left] .bubble::after{left:26px;transform:none}
+.paponwrap[data-bubble=right] .bubble{left:auto;right:4%;transform:translate(0,10px) scale(.88);transform-origin:100% 100%}
+.paponwrap[data-bubble=right] .bubble::after{left:auto;right:22px;transform:none}
+.paponwrap.talk[data-bubble=left] .bubble,.paponwrap.talk[data-bubble=right] .bubble{transform:none}
+
+/* escena 1: el hero */
+.heroart .paponwrap{position:absolute;left:0;bottom:-6%;width:min(40%,200px);z-index:3}
+/* el que acompaña en la esquina */
+.floatp{position:fixed;right:18px;bottom:18px;left:auto;z-index:65;width:104px;
+  opacity:0;transform:translateY(40px) scale(.85);pointer-events:none;
+  transition:opacity .45s var(--ease),transform .5s cubic-bezier(.34,1.56,.64,1)}
+.floatp.on{opacity:1;transform:none;pointer-events:auto}
+.floatp .bubble{font-size:13px}
+@media(max-width:700px){
+  .floatp{width:74px;right:10px;bottom:10px}
+  /* en el telefono, quieto solo asoma la cabeza: no tapa los precios de la carta */
+  .floatp.on{transform:translateY(52%)}
+  .floatp.on.talk,.floatp.on:focus-visible{transform:none}
+  .localp .bubble{font-size:12px;padding:8px 12px}
+}
+/* escena papas: asoma por detrás de la foto */
+.papasart{position:relative}
+.papasart .ph{position:relative;z-index:2}
+.peekp{position:absolute;right:10%;top:0;width:clamp(72px,8.5vw,100px);z-index:1;
+  transition:transform .75s cubic-bezier(.34,1.56,.64,1)}
+.peekp.up{transform:translateY(-58%)}
+/* escena local: llega caminando por la vereda de la ilustración */
+.localp{position:absolute;left:63.8%;bottom:14.6%;width:5.6%;min-width:38px;z-index:3;
+  transform:translateX(780%);transition:transform 2.6s linear}
+.localp.here{transform:none}
+.localp .bubble{font-size:13px}
+/* en telefono el local se encuadra 4:3: se ve el 75% central de la ilustracion (x 336 a 2352 de 2688),
+   el edificio queda un 33% mas grande. Papon se reubica para ese encuadre: pies en x 1790 de la ilustracion */
+@media(max-width:700px){
+  .storefront{aspect-ratio:4/3}
+  .storefront>img{height:100%;object-fit:cover}
+  .localp{left:68.4%;width:7.5%}
+  /* el globo va al costado, a la altura de las mesas: no tapa los carteles ni el neon */
+  .storefront .localp[data-bubble] .bubble{left:auto;right:calc(100% + 10px);bottom:auto;top:2%;
+    max-width:150px;font-size:12px;padding:8px 11px;transform:translate(8px,0) scale(.9);transform-origin:100% 50%}
+  .storefront .localp[data-bubble].talk .bubble{transform:none}
+  .storefront .localp[data-bubble] .bubble::after{left:100%;right:auto;top:50%;transform:translateY(-50%);
+    border:7px solid transparent;border-left-color:#fff} /* blanca: sobre la noche la tinta no se ve */
+}
+/* escena final: festeja el pedido */
+.finalp{position:absolute;left:0;bottom:0;width:clamp(96px,10vw,140px);z-index:3}
+@media(max-width:899px){
+  .finalp{position:relative;left:auto;bottom:auto;margin:0 auto 10px;width:88px}
+  .finalp.paponwrap .bubble{left:50%;right:auto;transform:translate(-50%,10px) scale(.88);transform-origin:50% 100%}
+  .finalp.paponwrap .bubble::after{left:50%;transform:translateX(-50%)}
+  .finalp.paponwrap.talk .bubble{transform:translate(-50%,0) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+  .papon .pupil{transition:none}
+}
+
+/* entrada del hero: CSS puro, arranca con el primer dibujo de la pagina (no espera al script) */
+@keyframes hin{from{opacity:0;transform:translateY(18px)}}
+.hin{animation:hin .75s var(--ease) both}
+.hin.d1{animation-delay:.08s}.hin.d2{animation-delay:.16s}.hin.d3{animation-delay:.24s}
+
+/* entradas */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important;transition-delay:0s!important}
+  .rv{opacity:1;transform:none}
+}
+/* ---------- rendimiento en telefonos ---------- */
+.papon{will-change:transform}
+.mq{will-change:transform}
+.storefront:not(.en-vista) .neonlayer *,
+.band:not(.en-vista) .mq,
+.paponwrap:not(.en-vista) .papon,
+.floatp:not(.on) .papon{animation-play-state:paused}
+/* en pantallas tactiles el "hover" queda pegado despues de tocar: se neutraliza y se da respuesta al toque */
+@media(hover:none){
+  .btn:hover{transform:none;box-shadow:none;background:var(--red);border-color:var(--red)}
+  .btn.ghost:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn.teal:hover{background:var(--teal);border-color:var(--teal)}
+  .btn.mustard:hover{background:var(--mustard);border-color:var(--ink)}
+  .final .btn.ghost:hover{background:transparent;color:#fff;border-color:#fff}
+  .btn:hover .ar{transform:none}
+  .card:hover{transform:none;box-shadow:0 8px 0 -2px rgba(30,23,19,.16)}
+  .btn:active{transform:scale(.97)}
+}
+/* menu de secciones para telefono y tablet */
+.navtoggle{display:none;margin-left:auto;width:44px;height:44px;flex-shrink:0;padding:0;cursor:pointer;
+  border:3px solid var(--ink);border-radius:50%;background:#fff;
+  flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.navtoggle span{display:block;width:16px;height:2.5px;border-radius:2px;background:var(--ink);
+  transition:transform .25s var(--ease),opacity .2s}
+.navtoggle[aria-expanded=true] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.navtoggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.navtoggle[aria-expanded=true] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.navmob{max-width:1200px;margin:8px auto 0;display:grid;padding:8px;background:#fff;
+  border:3px solid var(--ink);border-radius:22px;box-shadow:0 6px 0 -1px rgba(30,23,19,.14)}
+.navmob[hidden]{display:none}
+.navmob a{display:flex;align-items:center;min-height:48px;padding:0 16px;border-radius:14px;text-decoration:none;
+  font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase}
+.navmob a:active,.navmob a:focus-visible{background:var(--cream)}
+@media(max-width:959px){.navtoggle{display:flex}}
+@media(min-width:960px){.navmob{display:none!important}}
+@media(max-width:420px){
+  .navin{gap:10px;padding-left:16px}
+  .logo i,.navin .btn .largo{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="navin">
+    <a class="logo" href="#top">
+      <b><img class="logoimg" src="assets/logo-200.webp" width="200" height="131" alt="Frich 'n Fries"><i>'N FRIES</i></b>
+    </a>
+    <nav class="navlinks" aria-label="Secciones">
+      <a href="#menu">Menú</a>
+      <a href="#papas">Las papas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#sucursales">Sucursales</a>
+      <a href="#franquicias">Franquicias</a>
+    </nav>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navmob" aria-label="Abrir el menú de secciones">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="btn sm" href="#pedir">Pedir<span class="largo">online</span></a>
+  </div>
+  <nav class="navmob" id="navmob" aria-label="Secciones" hidden>
+    <a href="#menu">Menú</a>
+    <a href="#papas">Las papas</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#sucursales">Sucursales</a>
+    <a href="#franquicias">Franquicias</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero dots" id="top">
+  <div class="wrap heroin">
+    <div>
+      <p class="script hin">Americana con</p>
+      <h1 class="hin d1">Tonada <em>cordobesa</em></h1>
+      <p class="lede hin d2">Smash burgers, papas onduladas y esa canastita bien yankee.
+        En Nueva Córdoba, Valle Escondido y Jesús María.</p>
+      <div class="cta hin d3">
+        <a class="btn" href="#pedir">Pedir online <span class="ar">&rarr;</span></a>
+        <a class="btn ghost" href="#menu">Ver el menú</a>
+      </div>
+      <div class="stars hin d3">
+        <span class="s" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <b>4,4</b>
+        <span>1.198 opiniones en Google</span>
+      </div>
+    </div>
+    <div class="heroart hin d2">
+      <div class="disc" aria-hidden="true"></div>
+      <div class="ph round has">
+        <img src="assets/hero-600.webp" srcset="assets/hero-600.webp 600w, assets/hero-960.webp 960w" sizes="(min-width:980px) 480px, 80vw"
+          width="1200" height="900" alt="Hamburguesa doble con cheddar, lechuga, tomate y cebolla morada" fetchpriority="high">
+      </div>
+      <div class="paponwrap" id="paponHero" data-bubble="left" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+        <div class="bubble" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+<div class="band" aria-hidden="true">
+  <div class="mq">
+    <span>Smash &amp; Fries <i>&#9733;</i> American Burgers <i>&#9733;</i> Córdoba Capital <i>&#9733;</i> Papas Onduladas <i>&#9733;</i></span>
+    <span>Smash &amp; Fries <i>&#9733;</i> American Burgers <i>&#9733;</i> Córdoba Capital <i>&#9733;</i> Papas Onduladas <i>&#9733;</i></span>
+  </div>
+</div>
+<div class="checker" aria-hidden="true"></div>
+
+<!-- ================= MENU ================= -->
+<section class="blk" id="menu">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">The menu</p>
+      <h2>America Burger</h2>
+      <p>Doble medallón smash en todas, prensado en plancha caliente. Y todas, sin excepción,
+        vienen con las papas incluidas.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail" id="rail">
+      <article class="card rv" data-say="La California: la completa, con todo.">
+        <div class="ph has"><img src="assets/california-600.webp" srcset="assets/california-600.webp 600w, assets/california-900.webp 900w" sizes="(max-width:385px) 78vw, 300px" width="900" height="704" alt="Hamburguesa California" loading="lazy" decoding="async"></div>
+        <div class="cbody">
+          <h3>California</h3>
+          <p class="desc">Doble medallón, cuádruple cheddar, salsa thousand island, pepinillos,
+            cebolla morada, lechuga y tomate.</p>
+          <span class="incl">Papas incluidas</span>
+          <div class="foot"><span class="price">$15.000</span><a class="btn sm teal" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20pedir%20una%20California." target="_blank" rel="noopener" aria-label="Pedir la California por WhatsApp">Pedir</a></div>
+        </div>
+      </article>
+      <article class="card rv d1" data-say="Doble panceta. Sin culpa, ¿viste?">
+        <div class="ph has"><img src="assets/grand-bacon-600.webp" srcset="assets/grand-bacon-600.webp 600w, assets/grand-bacon-900.webp 900w" sizes="(max-width:385px) 78vw, 300px" width="900" height="704" alt="Hamburguesa Grand Bacon" loading="lazy" decoding="async"></div>
+        <div class="cbody">
+          <h3>Grand Bacon</h3>
+          <p class="desc">Doble medallón, doble panceta, cuádruple cheddar y salsa thousand island.</p>
+          <span class="incl">Papas incluidas</span>
+          <div class="foot"><span class="price">$16.500</span><a class="btn sm teal" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20pedir%20una%20Grand%20Bacon." target="_blank" rel="noopener" aria-label="Pedir la Grand Bacon por WhatsApp">Pedir</a></div>
+        </div>
+      </article>
+      <article class="card rv d2" data-say="La Big Em es mi debilidad.">
+        <div class="ph has"><img src="assets/big-em-600.webp" srcset="assets/big-em-600.webp 600w, assets/big-em-900.webp 900w" sizes="(max-width:385px) 78vw, 300px" width="900" height="704" alt="Hamburguesa Big Em" loading="lazy" decoding="async"></div>
+        <div class="cbody">
+          <h3>Big Em</h3>
+          <p class="desc">Doble medallón, cuádruple cheddar, salsa thousand island, pepinillos,
+            cebolla picada y lechuga.</p>
+          <span class="incl">Papas incluidas</span>
+          <div class="foot"><span class="price">$14.500</span><a class="btn sm teal" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20pedir%20una%20Big%20Em." target="_blank" rel="noopener" aria-label="Pedir la Big Em por WhatsApp">Pedir</a></div>
+        </div>
+      </article>
+      <article class="card rv d3" data-say="Pimientos salteados. Otra cosa.">
+        <div class="ph has"><img src="assets/bell-pepper-600.webp" srcset="assets/bell-pepper-600.webp 600w, assets/bell-pepper-900.webp 900w" sizes="(max-width:385px) 78vw, 300px" width="900" height="704" alt="Hamburguesa Bell Pepper" loading="lazy" decoding="async"></div>
+        <div class="cbody">
+          <h3>Bell Pepper</h3>
+          <p class="desc">Doble medallón, cuádruple cheddar, panceta, pimientos salteados
+            y salsa thousand island.</p>
+          <span class="incl">Papas incluidas</span>
+          <div class="foot"><span class="price">$15.500</span><a class="btn sm teal" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20pedir%20una%20Bell%20Pepper." target="_blank" rel="noopener" aria-label="Pedir la Bell Pepper por WhatsApp">Pedir</a></div>
+        </div>
+      </article>
+    </div>
+    <p class="railhint rv">
+      <span aria-hidden="true">&#8594;</span> Deslizá para ver más
+    </p>
+
+    <div class="carta">
+      <div class="cgroup rv">
+        <h3>America Burger</h3>
+        <p class="note">Todas con papas incluidas</p>
+        <div class="citem"><span class="n">California<span class="ing">Doble medallón, cuádruple cheddar, thousand island, pepinillos, cebolla morada, lechuga y tomate.</span></span><span class="p">$15.000</span></div>
+        <div class="citem"><span class="n">Doble Cheese Burger<span class="ing">Doble medallón, cuádruple cheddar, ketchup, mostaza americana, pepinillos y cebolla picada.</span></span><span class="p">$13.500</span></div>
+        <div class="citem"><span class="n">Bell Pepper<span class="ing">Doble medallón, cuádruple cheddar, panceta, pimientos salteados y thousand island.</span></span><span class="p">$15.500</span></div>
+        <div class="citem"><span class="n">Big Em<span class="ing">Doble medallón, cuádruple cheddar, thousand island, pepinillos, cebolla picada y lechuga.</span></span><span class="p">$14.500</span></div>
+        <div class="citem" data-say="Carne y queso. Nada más, nada menos."><span class="n">Doble Burger<span class="ing">Doble medallón y cuádruple cheddar. Nada más.</span></span><span class="p">$13.000</span></div>
+        <div class="citem"><span class="n">Grand Bacon<span class="ing">Doble medallón, doble panceta, cuádruple cheddar y thousand island.</span></span><span class="p">$16.500</span></div>
+        <div class="citem"><span class="n">Bacon Cheese<span class="ing">Doble medallón, panceta, ketchup, mostaza, cebolla morada, pepino y cuádruple cheddar.</span></span><span class="p">$15.500</span></div>
+        <div class="citem" data-say="Cebolla finita en la plancha. Olor a gloria."><span class="n">Fried Onion<span class="ing">Doble medallón cocido con delgadas capas de cebolla y cuádruple cheddar.</span></span><span class="p">$13.500</span></div>
+        <div class="citem" data-say="Barbacoa y aros de cebolla. Cowboy total."><span class="n">Western<span class="ing">Doble medallón, barbacoa, panceta, aros de cebolla fritos y cuádruple cheddar.</span></span><span class="p">$16.500</span></div>
+        <div class="citem" data-say="Pan de molde con manteca. Clásico yankee."><span class="n">Patty Melt<span class="ing">Pan de molde tostado con manteca, doble medallón, cebolla grillada, thousand island y cuádruple cheddar.</span></span><span class="p">$15.500</span></div>
+      </div>
+
+      <div>
+        <div class="cgroup rv d1">
+          <h3>Novedades</h3>
+          <div class="citem"><span class="n">Chicken Deluxe<span class="ing">Mayonesa, lechuga, cheddar y pollo crispy.</span></span><span class="p">$10.500</span></div>
+          <div class="citem"><span class="n">Chicken Spicy<span class="ing">Salsa spicy, panceta ahumada y pollo crispy.</span></span><span class="p">$10.500</span></div>
+          <div class="citem" data-say="Desayuno americano, pero a la noche."><span class="n">Egg &amp; Bacon<span class="ing">Sándwich de huevo, panceta ahumada, doble cheddar y pan tostado en manteca.</span></span><span class="p">$11.000</span></div>
+          <div class="citem" data-say="Sin pan, envuelta en lechuga. Re fit."><span class="n">Crunch<span class="ing">Sin pan: va envuelta en hojas de lechuga repollada bien crocantes. Doble carne smash, cuádruple cheddar, thousand island, cebolla morada, tomate y pepinillos.</span></span><span class="p">$11.000</span></div>
+        </div>
+
+        <div class="cgroup rv d2" style="margin-top:34px">
+          <h3>Veggie</h3>
+          <p class="note">También podés pedirlas veganas · Todas $13.000</p>
+          <div class="citem" data-say="Todas se pueden pedir veganas, eh."><span class="n">California &middot; Doble Cheese Burger &middot; Bell Pepper &middot; Big Em &middot; Doble Burger<span class="ing">Con medallón vegetal. Todas con papas incluidas.</span></span><span class="p">$13.000</span></div>
+        </div>
+
+        <div class="cgroup rv d2" style="margin-top:34px">
+          <h3>Nuggets de pollo</h3>
+          <div class="citem"><span class="n">1 unidad</span><span class="p">$800</span></div>
+          <div class="citem"><span class="n">10 unidades</span><span class="p">$7.500</span></div>
+          <div class="citem" data-say="¿Veinte? Invitá a alguien, eh."><span class="n">20 unidades</span><span class="p">$15.000</span></div>
+        </div>
+
+        <div class="cgroup rv d3" style="margin-top:34px">
+          <h3>Agregá tu extra</h3>
+          <div class="citem" data-say="¿Triple carne? Sos de los míos."><span class="n">Medallón extra</span><span class="p">$2.700</span></div>
+          <div class="citem"><span class="n">Extra bacon</span><span class="p">$2.000</span></div>
+          <div class="citem"><span class="n">Pan Martin's</span><span class="p">$3.000</span></div>
+          <div class="citem" data-say="¿Más papas? Ahora nos entendemos."><span class="n">Papas fritas</span><span class="p">$2.900</span></div>
+          <div class="citem"><span class="n">Aros de cebolla</span><span class="p">$3.500</span></div>
+          <div class="citem"><span class="n">Pote de aderezos</span><span class="p">$500</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAPAS ================= -->
+<section class="blk" id="papas" style="background:var(--cream-deep)">
+  <div class="wrap split">
+    <div class="papasart">
+      <div class="ph rv has"><img src="assets/papas-700.webp" srcset="assets/papas-700.webp 700w, assets/papas-1120.webp 1120w" sizes="(min-width:1250px) 572px, (min-width:900px) 46vw, 92vw" width="1400" height="1046" alt="Canastita de papas onduladas con papel a cuadros rojo y blanco" loading="lazy" decoding="async"></div>
+      <div class="paponwrap peekp" id="paponPeek" data-bubble="right" aria-hidden="true"><div class="bubble"></div></div>
+    </div>
+    <div>
+      <div class="head rv d1">
+        <p class="kick">The fries</p>
+        <h2>Papas onduladas, canastita yankee</h2>
+        <p>No son un acompañamiento. Para mucha gente son el motivo por el que entró la primera vez.</p>
+      </div>
+      <blockquote class="quote rv d2" style="margin-top:28px">
+        <div class="s" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Quizás fueron las papas onduladas o la canastita muy yankee que me dijeron
+          &lsquo;esta tiene que ser una buena hamburguesa&rsquo;. Y no me equivocaba.&rdquo;</p>
+        <footer>Lucila C. · Local Guide en Google</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EL LOCAL ================= -->
+<section class="blk" id="historia">
+  <div class="wrap">
+    <div class="head rv" style="text-align:center;margin-inline:auto">
+      <p class="kick">Our place</p>
+      <h2>Se ve desde la esquina</h2>
+      <p style="margin-inline:auto">Mesas de picnic rojas en la vereda, el cartel prendido y olor a
+        plancha. Vení a comer acá, que la hamburguesa recién hecha no se parece a ninguna otra.</p>
+    </div>
+
+    <div class="storefront rv d1">
+      <img src="assets/local-1400.webp" srcset="assets/local-800.webp 800w, assets/local-1400.webp 1400w, assets/local-2200.webp 2200w" sizes="(min-width:1310px) 1200px, 92vw" width="2688" height="1520" loading="lazy" decoding="async" alt="Ilustración del local de Frich 'n Fries en la esquina, con mesas de picnic rojas en la vereda">
+      <svg class="neonlayer" viewBox="0 0 2688 1520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <filter id="glowRed" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="14" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glowSoft" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glowStar" x="-400%" y="-400%" width="900%" height="900%">
+            <feGaussianBlur stdDeviation="5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <linearGradient id="gradFugaz" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".75" stop-color="#DDE8FF" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="1"/>
+          </linearGradient>
+          <radialGradient id="gBulb">
+            <stop offset="0" stop-color="#FFF7DC"/><stop offset=".34" stop-color="#FFD489"/>
+            <stop offset=".46" stop-color="#FFB64A" stop-opacity=".55"/><stop offset="1" stop-color="#FFB64A" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gStar">
+            <stop offset="0" stop-color="#fff"/><stop offset=".28" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#DDE8FF" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="glowWarm" x="-300%" y="-300%" width="700%" height="700%">
+            <feGaussianBlur stdDeviation="7" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- cielo: algunas estrellas titilan y cada tanto cruza una estrella fugaz -->
+        <g class="sky">
+          <circle class="tw" cx="627" cy="59" r="12" style="animation-delay:0.00s;animation-duration:3.8s"/>
+          <circle class="tw" cx="1822" cy="61" r="12" style="animation-delay:-0.83s;animation-duration:4.7s"/>
+          <circle class="tw" cx="982" cy="71" r="12" style="animation-delay:-1.66s;animation-duration:5.6s"/>
+          <circle class="tw" cx="1568" cy="114" r="12" style="animation-delay:-2.49s;animation-duration:3.8s"/>
+          <circle class="tw" cx="145" cy="169" r="12" style="animation-delay:-3.32s;animation-duration:4.7s"/>
+          <circle class="tw" cx="825" cy="261" r="12" style="animation-delay:-4.15s;animation-duration:5.6s"/>
+          <circle class="tw" cx="1469" cy="363" r="12" style="animation-delay:-4.98s;animation-duration:3.8s"/>
+          <circle class="tw" cx="1644" cy="395" r="12" style="animation-delay:-5.81s;animation-duration:4.7s"/>
+          <g class="fugaz" id="fugaz">
+            <polygon points="0,-2.6 0,2.6 -380,0" fill="url(#gradFugaz)"/>
+            <circle r="4.2" fill="#fff" filter="url(#glowStar)"/>
+          </g>
+        </g>
+
+        <!-- cables: de poste a poste, sin cortes; en el derecho se enganchan en sus abrazaderas -->
+        <g class="wires">
+          <path class="wire" d="M192,345 Q1198.5,404 2205,283"/>
+          <path class="wire" d="M159,345 Q70,363 -20,361"/>
+          <path class="wire" d="M2258,283 Q2485,318 2712,317"/>
+          <path class="wire" d="M192,368 Q1198.5,435 2205,322"/>
+          <path class="wire" d="M159,368 Q70,386 -20,384"/>
+          <path class="wire" d="M2258,322 Q2485,357 2712,356"/>
+          <path class="wire" d="M192,391 Q1198.5,466 2205,361"/>
+          <path class="wire" d="M159,391 Q70,409 -20,407"/>
+          <path class="wire" d="M2258,361 Q2485,396 2712,395"/>
+          <rect class="ins" x="191" y="340" width="8" height="10" rx="2"/>
+          <rect class="ins" x="152" y="340" width="8" height="10" rx="2"/>
+          <rect class="ins" x="191" y="363" width="8" height="10" rx="2"/>
+          <rect class="ins" x="152" y="363" width="8" height="10" rx="2"/>
+          <rect class="ins" x="191" y="386" width="8" height="10" rx="2"/>
+          <rect class="ins" x="152" y="386" width="8" height="10" rx="2"/>
+        </g>
+
+        <!-- cartel izquierdo: de noche se prende (panel medido x 372-648, inclinado -8,3 grados) -->
+        <polygon class="lit" points="374,763 646,716 646,783 374,815"/>
+        <g transform="translate(510,769.5) rotate(-8.3)">
+          <text class="board" x="0" y="14">AMERICAN</text>
+        </g>
+
+        <!-- cartel vertical de la esquina -->
+        <text class="vert" x="1085.5" y="522">B</text>
+        <text class="vert" x="1085.5" y="560">U</text>
+        <text class="vert" x="1085.5" y="598">R</text>
+        <text class="vert" x="1085.5" y="636">G</text>
+        <text class="vert" x="1085.5" y="674">E</text>
+        <text class="vert" x="1085.5" y="712">R</text>
+        <text class="vert" x="1085.5" y="750">S</text>
+
+        <!-- neon sobre la pared blanca del lateral, paralelo a la cornisa (6,6 grados) -->
+        <g transform="translate(1735,710) rotate(6.6)">
+          <text class="nscript" x="0" y="0">Frich</text>
+        </g>
+
+        <!-- bombitas: cada una en el centro medido de la franja; tamano y paso siguen la perspectiva -->
+        <circle class="bulb" cx="356.0" cy="850.5" r="15.0" style="animation-delay:0.00s"/>
+        <circle class="bulb" cx="385.8" cy="846.8" r="15.0" style="animation-delay:0.07s"/>
+        <circle class="bulb" cx="416.0" cy="843.1" r="15.8" style="animation-delay:0.14s"/>
+        <circle class="bulb" cx="447.3" cy="839.5" r="16.5" style="animation-delay:0.21s"/>
+        <circle class="bulb" cx="480.2" cy="835.6" r="17.0" style="animation-delay:0.28s"/>
+        <circle class="bulb" cx="514.3" cy="831.7" r="17.5" style="animation-delay:0.35s"/>
+        <circle class="bulb" cx="549.4" cy="827.6" r="18.0" style="animation-delay:0.42s"/>
+        <circle class="bulb" cx="585.4" cy="823.4" r="18.5" style="animation-delay:0.49s"/>
+        <circle class="bulb" cx="622.4" cy="819.4" r="19.3" style="animation-delay:0.56s"/>
+        <circle class="bulb" cx="660.9" cy="815.1" r="20.0" style="animation-delay:0.63s"/>
+        <circle class="bulb" cx="700.6" cy="810.4" r="20.5" style="animation-delay:0.70s"/>
+        <circle class="bulb" cx="741.5" cy="806.7" r="21.3" style="animation-delay:0.77s"/>
+        <circle class="bulb" cx="783.9" cy="802.4" r="21.8" style="animation-delay:0.84s"/>
+        <circle class="bulb" cx="827.4" cy="797.8" r="22.0" style="animation-delay:0.91s"/>
+        <circle class="bulb" cx="871.6" cy="793.3" r="22.8" style="animation-delay:0.98s"/>
+        <circle class="bulb" cx="917.0" cy="789.1" r="23.5" style="animation-delay:1.05s"/>
+        <circle class="bulb" cx="964.1" cy="784.6" r="24.0" style="animation-delay:1.12s"/>
+        <circle class="bulb" cx="1012.1" cy="780.0" r="24.0" style="animation-delay:1.19s"/>
+        <circle class="bulb" cx="1158.5" cy="767.5" r="25.0" style="animation-delay:1.26s"/>
+        <circle class="bulb" cx="1208.6" cy="762.6" r="25.3" style="animation-delay:1.33s"/>
+        <circle class="bulb" cx="1259.0" cy="757.8" r="25.5" style="animation-delay:1.40s"/>
+        <circle class="bulb" cx="1310.2" cy="753.1" r="26.5" style="animation-delay:1.47s"/>
+        <circle class="bulb" cx="1363.4" cy="748.2" r="27.8" style="animation-delay:1.54s"/>
+        <circle class="bulb" cx="1426.0" cy="745.7" r="27.8" style="animation-delay:1.61s"/>
+        <circle class="bulb" cx="1481.7" cy="750.2" r="27.3" style="animation-delay:1.68s"/>
+        <circle class="bulb" cx="1536.2" cy="754.9" r="26.5" style="animation-delay:1.75s"/>
+        <circle class="bulb" cx="1589.4" cy="759.4" r="26.5" style="animation-delay:1.82s"/>
+        <circle class="bulb" cx="1642.2" cy="763.9" r="26.3" style="animation-delay:1.89s"/>
+        <circle class="bulb" cx="1694.5" cy="767.9" r="25.8" style="animation-delay:1.96s"/>
+        <circle class="bulb" cx="1745.9" cy="772.6" r="25.5" style="animation-delay:2.03s"/>
+        <circle class="bulb" cx="1797.1" cy="777.3" r="24.8" style="animation-delay:2.10s"/>
+        <circle class="bulb" cx="1846.5" cy="781.1" r="24.0" style="animation-delay:2.17s"/>
+        <circle class="bulb" cx="1894.7" cy="785.1" r="23.8" style="animation-delay:2.24s"/>
+        <circle class="bulb" cx="1942.2" cy="789.4" r="23.3" style="animation-delay:2.31s"/>
+        <circle class="bulb" cx="1988.9" cy="793.6" r="23.0" style="animation-delay:2.38s"/>
+        <circle class="bulb" cx="2034.8" cy="797.5" r="22.5" style="animation-delay:2.45s"/>
+        <circle class="bulb" cx="2079.6" cy="801.3" r="21.8" style="animation-delay:2.52s"/>
+        <circle class="bulb" cx="2123.3" cy="805.9" r="21.0" style="animation-delay:2.59s"/>
+      </svg>
+      <div class="paponwrap localp" id="paponLocal" data-bubble="right" aria-hidden="true"><div class="bubble"></div></div>
+    </div>
+
+    <p class="sfcap rv d2">
+      <span class="s">Frich 'n Fries</span>
+      <span class="a">P. DEL HUERTO 99 &middot; JESÚS MARÍA, CÓRDOBA</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section class="blk" id="nosotros">
+  <div class="wrap crew">
+    <div class="collage">
+      <figure class="snap eq rv">
+        <div class="ph-in"><img src="assets/equipo-600.webp" srcset="assets/equipo-600.webp 600w, assets/equipo-800.webp 800w" sizes="(min-width:900px) 300px, 78vw" width="800" height="1162" decoding="async" alt="Dos integrantes del equipo de Frich con buzos de la marca" loading="lazy" style="object-position:50% 30%"></div>
+        <figcaption>Los del buzo</figcaption>
+      </figure>
+      <figure class="snap ne rv d1">
+        <div class="ph-in"><img src="assets/neon-480.webp" srcset="assets/neon-480.webp 480w" sizes="220px" width="760" height="942" decoding="async" alt="Cartel de neón de Frich con la flecha encendida" loading="lazy"></div>
+        <figcaption>Siempre prendido</figcaption>
+      </figure>
+      <figure class="snap am rv d2">
+        <div class="ph-in"><img src="assets/ambiente-700.webp" srcset="assets/ambiente-700.webp 700w, assets/ambiente-1320.webp 1320w" sizes="(min-width:900px) 330px, 92vw" width="1320" height="624" decoding="async" alt="El local de Jesús María de noche, con gente comiendo en las mesas de picnic de la vereda" loading="lazy" style="object-position:50% 60%"></div>
+        <figcaption>Una noche en Jesús María</figcaption>
+      </figure>
+    </div>
+    <div class="head rv d1">
+      <p class="kick">The crew</p>
+      <h2>Le ponemos el buzo</h2>
+      <p>Frich es cordobés de punta a punta: tres locales, la plancha siempre caliente y un equipo
+        que le pone el buzo todos los días. Literal, mirá la foto.</p>
+      <p>Y se nota en cada detalle: el neón prendido, la bolsa de papel, las mesas rojas en la vereda
+        llenas un viernes a la noche. Así nos gusta comer una hamburguesa.</p>
+      <div class="cta" style="margin-top:26px"><a class="btn ghost" href="#sucursales">Conocé los locales <span class="ar">&rarr;</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEÑAS ================= -->
+<section class="blk dots" id="resenas">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">The reviews</p>
+      <h2>4,4 con 1.198 opiniones</h2>
+      <p>Todo lo que sigue lo escribieron clientes en Google. No lo escribimos nosotros.</p>
+    </div>
+    <div class="qgrid">
+      <blockquote class="quote rv">
+        <div class="s" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Excelente hamburguesa, pedí una burger solo queso y estaba espectacular.&rdquo;</p>
+        <footer>Cliente en Google</footer>
+      </blockquote>
+      <blockquote class="quote rv d1">
+        <div class="s" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Muy buena calidad los ingredientes, todo muy rico y muy buen servicio.&rdquo;</p>
+        <footer>Cliente en Google</footer>
+      </blockquote>
+      <blockquote class="quote rv d2">
+        <div class="s" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Apenas vi el cartel de Tonadita pegué la vuelta y vine para acá.&rdquo;</p>
+        <footer>Ignacio R. · Local Guide</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUCURSALES ================= -->
+<section class="blk" id="sucursales" style="background:var(--cream-deep)">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">The spots</p>
+      <h2>Tres locales en Córdoba</h2>
+      <p>A la noche abrimos los tres desde las 20 h, y en Jesús María también al mediodía. El de Nueva
+        Córdoba es chico y se llena, así que si vas temprano o pedís para llevar, la pasás mejor.</p>
+    </div>
+    <div class="shops">
+      <article class="shop rv">
+        <div class="foto"><img src="assets/suc-nueva-cordoba-700.webp" srcset="assets/suc-nueva-cordoba-700.webp 700w, assets/suc-nueva-cordoba-900.webp 900w" sizes="(min-width:800px) 380px, 92vw" width="900" height="634" decoding="async" alt="Frente del local de Nueva Córdoba, sobre la vereda arbolada de Ituzaingó" loading="lazy" style="object-position:50% 45%"></div>
+        <div class="sb">
+          <h3>Nueva Córdoba</h3>
+          <p class="addr">Ituzaingó 909</p>
+          <p class="tel">0351 614-2090</p>
+          <p class="hrs">Todos los días de 20 a 24 h</p>
+          <div class="acts">
+            <a class="btn sm ghost" href="https://www.google.com/maps/dir/?api=1&destination=Frich%20Hamburguesas%20Ituzaing%C3%B3%20909%20C%C3%B3rdoba" target="_blank" rel="noopener" aria-label="Cómo llegar al local de Nueva Córdoba">Cómo llegar</a>
+            <a class="btn sm" href="tel:+543516142090" aria-label="Llamar al local de Nueva Córdoba">Llamar</a>
+          </div>
+        </div>
+      </article>
+      <article class="shop rv d1">
+        <div class="foto"><img src="assets/suc-valle-escondido-700.webp" srcset="assets/suc-valle-escondido-700.webp 700w, assets/suc-valle-escondido-900.webp 900w" sizes="(min-width:800px) 380px, 92vw" width="900" height="1110" decoding="async" alt="El local de Valle Escondido de noche, con gente esperando en la puerta" loading="lazy" style="object-position:50% 58%"></div>
+        <div class="sb">
+          <h3>Valle Escondido</h3>
+          <p class="addr">Av. República de China 1400</p>
+          <p class="tel">0351 215-1167</p>
+          <p class="hrs">Todos los días de 20 a 24 h</p>
+          <div class="acts">
+            <a class="btn sm ghost" href="https://www.google.com/maps/dir/?api=1&destination=Frich%20Hamburguesas%20Av%20Rep%C3%BAblica%20de%20China%201400%20C%C3%B3rdoba" target="_blank" rel="noopener" aria-label="Cómo llegar al local de Valle Escondido">Cómo llegar</a>
+            <a class="btn sm" href="tel:+543512151167" aria-label="Llamar al local de Valle Escondido">Llamar</a>
+          </div>
+        </div>
+      </article>
+      <article class="shop rv d2">
+        <div class="foto"><img src="assets/suc-jesus-maria-700.webp" srcset="assets/suc-jesus-maria-700.webp 700w, assets/suc-jesus-maria-1100.webp 1100w" sizes="(min-width:800px) 380px, 92vw" width="1100" height="492" decoding="async" alt="El local de Jesús María al atardecer, con las mesas de picnic rojas en la vereda" loading="lazy" style="object-position:55% 55%"></div>
+        <div class="sb">
+          <h3>Jesús María</h3>
+          <p class="addr">Paseo del Huerto 99</p>
+          <p class="tel">03525 55-5050</p>
+          <p class="hrs">Mediodía: lunes a sábado de 12 a 15 h</p>
+          <p class="hrs">Noche: todos los días desde las 20 h</p>
+          <div class="acts">
+            <a class="btn sm ghost" href="https://www.google.com/maps/dir/?api=1&destination=Frich%20Hamburguesas%20Paseo%20del%20Huerto%2099%20Jes%C3%BAs%20Mar%C3%ADa%20C%C3%B3rdoba" target="_blank" rel="noopener" aria-label="Cómo llegar al local de Jesús María">Cómo llegar</a>
+            <a class="btn sm" href="tel:+543525555050" aria-label="Llamar al local de Jesús María">Llamar</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FRANQUICIAS ================= -->
+<div class="checker" aria-hidden="true"></div>
+<section class="blk franq" id="franquicias">
+  <div class="wrap fwrap">
+    <div>
+      <div class="head rv">
+        <p class="kick">Now open</p>
+        <h2>Llevá Frich a tu ciudad</h2>
+        <p>Ya son tres locales en Córdoba y ahora abrimos la puerta a nuevas sucursales.
+          Buscamos socios que compartan la pasión por la gastronomía y que estén en la operación
+          del día a día del local.</p>
+      </div>
+      <ul class="facts rv d1">
+        <li>Tres locales funcionando en Córdoba.</li>
+        <li>4,4 estrellas con 1.198 opiniones en Google.</li>
+        <li>Una marca con identidad propia: carta, cartel y packaging.</li>
+      </ul>
+      <div class="fcta rv d2">
+        <p class="fnote">El primer paso es un formulario. No es una aprobación: es para conocernos
+          y ver si hay un buen encaje entre las dos partes.</p>
+        <a class="btn mustard" href="https://docs.google.com/forms/d/e/1FAIpQLSfclbAx7eWhkjePWXjdJE_mANjb1KbXXXr2iTT-DNzI3LgleQ/viewform" target="_blank" rel="noopener">Completar el formulario <span class="ar">&rarr;</span></a>
+        <p class="fine">Te va a preguntar en qué ciudad querés abrir, si ya tenés local, tu experiencia
+          en gastronomía y en qué plazo te gustaría arrancar.</p>
+      </div>
+    </div>
+    <figure class="snap pk rv d1">
+      <div class="ph-in"><img src="assets/packaging-560.webp" srcset="assets/packaging-560.webp 560w, assets/packaging-760.webp 760w" sizes="(min-width:900px) 380px, 80vw" width="760" height="1320" decoding="async" alt="Bolsa de papel blanca de Frich 'n Fries con el logo" loading="lazy" style="object-position:50% 62%"></div>
+      <figcaption>Tu próxima bolsa, en tu ciudad</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="final" id="pedir">
+  <div class="wrap inner">
+    <div class="paponwrap finalp" id="paponFinal" data-bubble="left" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+      <div class="bubble" aria-hidden="true"></div>
+    </div>
+    <p class="script">Don't wait</p>
+    <h2>Pedí y pasá a buscar</h2>
+    <p>El local se llena y la espera puede ser larga. Si pedís antes, llegás y está lista.</p>
+    <div class="cta">
+      <a class="btn" id="waPedido" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    </div>
+    <p class="apps">O llamá directo a tu local:</p>
+    <div class="locs">
+      <a class="btn sm ghost" href="tel:+543516142090">Nueva Córdoba</a>
+      <a class="btn sm ghost" href="tel:+543512151167">Valle Escondido</a>
+      <a class="btn sm ghost" href="tel:+543525555050">Jesús María</a>
+    </div>
+    <p class="apps">También estamos en <a href="https://www.rappi.com.ar/restaurantes/132532-frich-hamburgueseria" target="_blank" rel="noopener">Rappi</a>
+      y <a href="https://www.pedidosya.com.ar/restaurantes/cordoba/frich-burger-menu" target="_blank" rel="noopener">PedidosYa</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap fx">
+    <div>
+      <a class="logo" href="#top" style="color:var(--cream)">
+        <b><img class="logoimg" src="assets/logo-200.webp" width="200" height="131" alt="Frich 'n Fries"><i>'N FRIES</i></b>
+      </a>
+      <p class="small">Ituzaingó 909, Nueva Córdoba · 0351 614-2090 ·
+        <a href="https://www.instagram.com/frich.hamburguesas/" target="_blank" rel="noopener">@frich.hamburguesas</a></p>
+    </div>
+    <div>
+      <span class="demo">Página de muestra</span>
+      <p class="small">Sitio de demostración. Los datos de contacto, direcciones, fotos y reseñas son reales;
+        parte del menú es de ejemplo hasta cargar la carta oficial.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Papón, la mascota. Se dibuja una vez y se clona donde haga falta. -->
+<template id="papon-tpl">
+<svg class="papon" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#1E1713" stroke-linecap="round" stroke-linejoin="round">
+    <!-- piernas y zapatos -->
+    <path d="M84 250v34" fill="none" stroke-width="8"/>
+    <path d="M116 250v34" fill="none" stroke-width="8"/>
+    <ellipse cx="74" cy="290" rx="22" ry="12" fill="#E03127" stroke-width="5.5"/>
+    <ellipse cx="126" cy="290" rx="22" ry="12" fill="#E03127" stroke-width="5.5"/>
+    <!-- brazo izquierdo, el que señala -->
+    <g class="pp-arml">
+      <path d="M58 150q-26 10-30 30" fill="none" stroke-width="8"/>
+      <circle cx="26" cy="186" r="12" fill="#FBF3E4" stroke-width="5"/>
+    </g>
+    <!-- brazo derecho, el que saluda -->
+    <g class="pp-arm">
+      <path d="M142 150q26-6 32-26" fill="none" stroke-width="8"/>
+      <circle cx="176" cy="118" r="12" fill="#FBF3E4" stroke-width="5"/>
+    </g>
+    <!-- cuerpo de papa -->
+    <rect x="56" y="82" width="88" height="172" rx="22" fill="#F2C14E" stroke-width="6.5"/>
+    <!-- las ondas de la papa ondulada -->
+    <path d="M60 196h80M60 214h80M60 232h80" fill="none" stroke="#D9A63C" stroke-width="5" opacity=".9"/>
+    <!-- cara -->
+    <g class="eyes">
+      <circle class="eye" cx="82" cy="132" r="16" fill="#fff" stroke-width="4.5"/>
+      <circle class="eye" cx="118" cy="132" r="16" fill="#fff" stroke-width="4.5"/>
+      <circle class="pupil" cx="82" cy="133" r="6.6" fill="#1E1713" stroke="none"/>
+      <circle class="pupil" cx="118" cy="133" r="6.6" fill="#1E1713" stroke="none"/>
+    </g>
+    <path class="pp-smile" d="M84 166q16 16 32 0" fill="none" stroke-width="5.5"/>
+    <ellipse class="pp-o" cx="100" cy="171" rx="9" ry="10" fill="#7A2A1F" stroke-width="4.5"/>
+    <!-- mejillas -->
+    <circle class="pp-cheek" cx="66" cy="156" r="6" fill="#E8907F" stroke="none"/>
+    <circle class="pp-cheek" cx="134" cy="156" r="6" fill="#E8907F" stroke="none"/>
+    <!-- gorrito de diner -->
+    <path d="M60 84q0-34 40-34t40 34z" fill="#FBF3E4" stroke-width="6"/>
+    <rect x="54" y="78" width="92" height="14" rx="7" fill="#E03127" stroke-width="5.5"/>
+  </g>
+</svg>
+</template>
+
+<div class="paponwrap floatp" id="paponFloat" data-bubble="right" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+  <div class="bubble" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* entradas al hacer scroll, con red de seguridad:
+   si el observador no dispara, a los 2,5 s se muestra todo igual */
+var els=[].slice.call(document.querySelectorAll('.rv'));
+function showAll(){els.forEach(function(e){e.classList.add('in');});}
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e){io.observe(e);});
+  setTimeout(showAll,2500);
+}else{showAll();}
+
+/* el carrusel se puede arrastrar con el mouse, no solo con la rueda */
+var rail=document.getElementById('rail');
+if(rail){
+  var down=false,startX=0,startL=0;
+  rail.addEventListener('pointerdown',function(e){
+    rail.setAttribute('data-drag','0');
+    if(e.target.closest('a'))return;
+    down=true;startX=e.clientX;startL=rail.scrollLeft;rail.style.cursor='grabbing';
+  });
+  window.addEventListener('pointerup',function(){down=false;rail.style.cursor='';});
+  window.addEventListener('pointermove',function(e){
+    if(!down)return;
+    if(Math.abs(e.clientX-startX)>6)rail.setAttribute('data-drag','1');
+    rail.scrollLeft=startL-(e.clientX-startX);
+  });
+}
+
+/* el menu del telefono: abre, cierra al elegir, con Escape o tocando afuera */
+(function(){
+  var tg=document.querySelector('.navtoggle'), nm=document.getElementById('navmob');
+  if(!tg||!nm)return;
+  function abrir(si){
+    tg.setAttribute('aria-expanded',si?'true':'false');
+    tg.setAttribute('aria-label',si?'Cerrar el menú':'Abrir el menú de secciones');
+    nm.hidden=!si;
+  }
+  tg.addEventListener('click',function(){abrir(nm.hidden);});
+  nm.addEventListener('click',function(e){if(e.target.closest('a'))abrir(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!nm.hidden){abrir(false);tg.focus();}});
+  document.addEventListener('click',function(e){if(!nm.hidden&&!e.target.closest('.nav'))abrir(false);});
+})();
+
+/* lo que se anima solo corre mientras esta en pantalla */
+(function(){
+  var els=document.querySelectorAll('.storefront,.band,.paponwrap');
+  if(!('IntersectionObserver' in window)){[].forEach.call(els,function(e){e.classList.add('en-vista');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){e.target.classList.toggle('en-vista',e.isIntersecting);});},{rootMargin:'120px 0px'});
+  [].forEach.call(els,function(e){io.observe(e);});
+})();
+
+/* ---------- estrella fugaz sobre el local ---------- */
+(function(){
+  var g=document.getElementById('fugaz'), sf=document.querySelector('.storefront');
+  if(!g||!sf||!g.animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function aLaVista(){var r=sf.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;}
+  function cruzar(){
+    if(!document.hidden&&aLaVista()){
+      /* siempre en la franja alta del cielo: lejos de la luna, los postes y el techo */
+      var derecha=Math.random()<.5, ang=rnd(14,26), largo=rnd(360,440);
+      var x0=derecha?rnd(380,1700):rnd(820,2120), y0=rnd(30,165);
+      var th=derecha?ang:180-ang, rad=th*Math.PI/180;
+      var x1=x0+Math.cos(rad)*largo, y1=y0+Math.sin(rad)*largo;
+      g.animate([
+        {transform:'translate('+x0+'px,'+y0+'px) rotate('+th+'deg)',opacity:0},
+        {opacity:1,offset:.18},{opacity:1,offset:.7},
+        {transform:'translate('+x1+'px,'+y1+'px) rotate('+th+'deg)',opacity:0}
+      ],{duration:rnd(950,1300),easing:'cubic-bezier(.3,.1,.6,1)'});
+    }
+    setTimeout(cruzar,rnd(4500,9000));
+  }
+  setTimeout(cruzar,1800);
+})();
+
+/* ---------- Papón, la mascota: narra el recorrido ---------- */
+(function(){
+  var tpl=document.getElementById('papon-tpl');
+  var wraps=[].slice.call(document.querySelectorAll('.paponwrap'));
+  if(!tpl||!wraps.length)return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id){return document.getElementById(id);}
+
+  wraps.forEach(function(w){
+    var rig=document.createElement('div');
+    rig.className='pp-rig';
+    rig.appendChild(tpl.content.cloneNode(true));
+    w.insertBefore(rig,w.firstChild);
+  });
+  var svgs=[].slice.call(document.querySelectorAll('.papon'));
+
+  /* ---- la mirada: sigue el cursor, o lo que Papón esté comentando ---- */
+  var mx=innerWidth/2,my=innerHeight/2,raf=null,MAX=5.6;
+  function track(){
+    raf=null;
+    svgs.forEach(function(s){
+      var box=s.getBoundingClientRect();
+      if(!box.width||box.bottom<0||box.top>innerHeight)return;
+      var pupils=s.querySelectorAll('.pupil'), eyes=s.querySelectorAll('.eye');
+      for(var i=0;i<pupils.length;i++){
+        var r=eyes[i].getBoundingClientRect();
+        var dx=mx-(r.left+r.width/2), dy=my-(r.top+r.height/2);
+        var d=Math.hypot(dx,dy)||1, k=Math.min(1,d/200);
+        /* unidades del dibujo, no pixeles: se ve igual en cualquier tamano */
+        pupils[i].style.transform='translate('+(dx/d*MAX*k).toFixed(2)+'px,'+(dy/d*MAX*k).toFixed(2)+'px)';
+      }
+    });
+  }
+  function lookAt(x,y){mx=x;my=y;if(raf===null)raf=requestAnimationFrame(track);}
+  if(!reduce){
+    addEventListener('pointermove',function(e){lookAt(e.clientX,e.clientY);},{passive:true});
+    setInterval(function(){
+      if(document.hidden)return;
+      svgs.forEach(function(s){
+        s.classList.add('blink');
+        setTimeout(function(){s.classList.remove('blink');},140);
+      });
+    },4300);
+  }
+
+  /* ---- hablar y moverse ---- */
+  function say(w,txt,ms){
+    var b=w&&w.querySelector('.bubble');
+    if(!b||!txt)return;
+    b.textContent=txt;
+    w.classList.remove('talk');void w.offsetWidth;w.classList.add('talk');
+    clearTimeout(w._t);
+    w._t=setTimeout(function(){w.classList.remove('talk');},ms||3200);
+  }
+  var DUR={hop:720,spin:980,wave:1500,blush:3400,point:3400};
+  function act(w,name){
+    if(!w||!name)return;
+    w.classList.remove(name);void w.offsetWidth;w.classList.add(name);
+    clearTimeout(w['_'+name]);
+    w['_'+name]=setTimeout(function(){w.classList.remove(name);},DUR[name]||1200);
+  }
+
+  /* ---- las escenas: una por sección ---- */
+  var float=$('paponFloat');
+  var scenes=[
+    {sec:'top',        who:$('paponHero'),  line:'¡Eyy! Soy Papón. ¿Te muestro el lugar?',      act:'wave'},
+    {sec:'menu',       who:float,           line:'Primero lo importante, ¿viste? Las burgers.',  act:'hop'},
+    {sec:'papas',      who:$('paponPeek'),  line:'Y estas son mis primas. Onduladas, como yo.', act:'wave', enter:'peek'},
+    {sec:'historia',   who:$('paponLocal'), line:'Esta es mi casa. De noche se pone linda.',     act:'wave', enter:'walk',
+     el:'.storefront', f:.3}, /* se activa con la vereda ya a la vista, no con el titulo */
+    {sec:'nosotros',   who:float,           line:'Estos son los que me fríen. Con cariño, eh.',  act:'wave'},
+    {sec:'resenas',    who:float,           line:'Esto lo escribió la gente, eh. No yo.',        act:'blush'},
+    {sec:'sucursales', who:float,           line:'Tenemos tres. Elegí la que te quede cerca.',   act:'point'},
+    {sec:'franquicias',who:float,           line:'¿Un Frich en tu ciudad? Yo me mudo con vos.',  act:'hop'},
+    {sec:'pedir',      who:$('paponFinal'), line:'¿Y? ¿Pedimos?',                                act:'hop'}
+  ].filter(function(s){s.el=s.el?document.querySelector(s.el):$(s.sec);s.f=s.f||.45;return s.who&&s.el;});
+  var current=null, actor=null, dicho={}, pendiente=null;
+
+  function entrar(s){
+    if(s.enter==='peek'){s.who.classList.add('up');return 800;}
+    if(s.enter==='walk'){
+      if(reduce){s.who.classList.add('here');return 300;}
+      s.who.classList.add('walking','here');
+      clearTimeout(s._w);s._w=setTimeout(function(){s.who.classList.remove('walking');},2600);
+      return 2700;
+    }
+    return 0;
+  }
+  function salir(s){
+    if(s.enter==='peek')s.who.classList.remove('up');
+    if(s.enter==='walk'&&s.who.classList.contains('here')){
+      s.who.classList.remove('here','talk');
+      if(!reduce){
+        s.who.classList.add('walking');
+        clearTimeout(s._w);s._w=setTimeout(function(){s.who.classList.remove('walking');},2600);
+      }
+    }
+  }
+  function activar(s){
+    if(current===s)return;
+    var prev=current;
+    current=s;actor=s.who;
+    if(prev&&prev.who!==s.who){salir(prev);prev.who.classList.remove('talk');}
+    if(float)float.classList.toggle('on',s.who===float);
+    var espera=entrar(s);
+    if(!prev)espera=1300;                               /* al cargar, deja terminar la entrada del hero */
+    else if(s.who===float&&prev.who!==float)espera=500; /* que termine de aparecer antes de hablar */
+    clearTimeout(s._t);
+    s._t=setTimeout(function(){
+      if(current!==s)return;
+      if(s.sec==='pedir'&&pendiente){act(s.who,'spin');say(s.who,pendiente,4200);pendiente=null;return;}
+      act(s.who,s.act);
+      if(!dicho[s.sec]){dicho[s.sec]=1;say(s.who,s.line,3800);}
+    },espera);
+  }
+  function detectar(){
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)return scenes[scenes.length-1];
+    for(var i=0;i<scenes.length;i++){
+      var r=scenes[i].el.getBoundingClientRect(), linea=innerHeight*scenes[i].f;
+      if(r.top<=linea&&r.bottom>linea)return scenes[i];
+    }
+    return null;
+  }
+  /* cambia de escena recien cuando la nueva se sostiene un instante:
+     si el scroll pasa volando por varias secciones, Papon no entra y sale de cada una */
+  var cand=null,candT=null;
+  function escena(){
+    var hit=detectar();
+    if(!hit||hit===current){cand=null;clearTimeout(candT);return;}
+    if(!current){activar(hit);return;}
+    if(hit===cand)return;
+    cand=hit;clearTimeout(candT);
+    candT=setTimeout(function(){var h2=detectar();cand=null;if(h2&&h2!==current)activar(h2);},240);
+  }
+
+  /* ---- se inclina con la velocidad del scroll ---- */
+  var lastY=scrollY, lean=0, empuje=0, leanRaf=null, escRaf=null;
+  function leanLoop(){
+    leanRaf=null;
+    lean+=(empuje-lean)*0.18;empuje*=0.82;
+    if(Math.abs(lean)<0.05&&Math.abs(empuje)<0.05){lean=0;float.style.setProperty('--lean','0');return;}
+    float.style.setProperty('--lean',lean.toFixed(2));
+    leanRaf=requestAnimationFrame(leanLoop);
+  }
+  addEventListener('scroll',function(){
+    var y=scrollY,v=y-lastY;lastY=y;
+    if(!reduce&&float){
+      empuje=Math.max(-9,Math.min(9,-v*0.35));
+      if(leanRaf===null)leanRaf=requestAnimationFrame(leanLoop);
+    }
+    if(escRaf===null)escRaf=requestAnimationFrame(function(){escRaf=null;escena();});
+  },{passive:true});
+  addEventListener('resize',escena);
+  escena();
+
+  function visible(w){
+    if(!w)return false;
+    if(w===float&&!float.classList.contains('on'))return false;
+    var r=w.getBoundingClientRect();
+    return r.width>0&&r.bottom>0&&r.top<innerHeight;
+  }
+  function quien(){return visible(actor)?actor:(visible(float)?float:null);}
+
+  /* ---- comenta lo que tocás del menú ---- */
+  var ultimo=0, rail=$('rail');
+  function comentar(el,forzar){
+    var now=Date.now();
+    if(!forzar&&now-ultimo<1600)return;
+    ultimo=now;
+    var w=quien();if(!w)return;
+    var r=el.getBoundingClientRect();
+    lookAt(r.left+r.width/2,r.top+Math.min(r.height/2,120));
+    say(w,el.getAttribute('data-say'),2900);
+    if(forzar)act(w,'hop');
+  }
+  [].forEach.call(document.querySelectorAll('[data-say]'),function(el){
+    var t=null;
+    el.addEventListener('pointerenter',function(e){
+      if(e.pointerType!=='mouse')return;
+      t=setTimeout(function(){comentar(el,false);},380);
+    });
+    el.addEventListener('pointerleave',function(){clearTimeout(t);});
+    el.addEventListener('click',function(e){
+      if(e.target.closest('a'))return;
+      if(rail&&rail.getAttribute('data-drag')==='1')return;
+      clearTimeout(t);comentar(el,true);
+    });
+  });
+
+  /* ---- festeja cuando hacés un pedido ---- */
+  [].forEach.call(document.querySelectorAll('a[href="#pedir"],a[href^="tel:"],a[href*="instagram.com"],a[href*="wa.me"],a[href*="rappi"],a[href*="pedidosya"],a[href*="docs.google.com/forms"]'),function(a){
+    a.addEventListener('click',function(){
+      var w=quien()||actor, href=a.getAttribute('href');
+      var card=a.closest('.card'), h3=card&&card.querySelector('h3'), nombre=h3&&h3.textContent.trim();
+      if(href==='#pedir'){
+        say(w,'¡Vamos! Te llevo al pedido.',2400);act(w,'spin');
+        if(!current||current.sec!=='pedir')pendiente='¡Llegamos! Pedí por WhatsApp o llamá a tu local.';
+      }else if(href.indexOf('wa.me')>=0){
+        say(w,nombre?'¡Una '+nombre+'! Te abro WhatsApp.':'¡Eso! Te abro WhatsApp.',3000);act(w,'spin');
+      }else if(href.indexOf('tel:')===0){
+        say(w,'¡Eso! Del otro lado te atienden.',3000);act(w,'spin');
+      }else if(href.indexOf('rappi')>=0||href.indexOf('pedidosya')>=0){
+        say(w,'¡Que llegue calentito!',3000);act(w,'hop');
+      }else if(href.indexOf('docs.google.com/forms')>=0){
+        say(w,'¡Suerte! Ojalá nos veamos en tu ciudad.',3400);act(w,'spin');
+      }else{
+        say(w,'Escribinos por Insta, dale.',3000);act(w,'hop');
+      }
+    });
+  });
+
+  /* ---- si lo tocás, contesta ---- */
+  var frases=['¡Eyy! ¿Todo bien?','Vení que se enfrían.','¿Con papas? Obvio.',
+              'Yo que vos, pedía ya.','La canastita es mía, eh.','A la noche abrimos los tres, te espero.'];
+  var last=-1;
+  function charla(w){
+    var i;
+    do{i=Math.floor(Math.random()*frases.length);}while(i===last&&frases.length>1);
+    last=i;say(w,frases[i],2800);act(w,'hop');
+  }
+  wraps.forEach(function(w){
+    w.addEventListener('click',function(){charla(w);});
+    w.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();charla(w);}
+    });
+  });
+
+  /* ---- cuando nadie lo mira, se mueve solo ---- */
+  if(!reduce)setInterval(function(){
+    var w=quien();
+    if(document.hidden||!w||w.classList.contains('talk')||w.classList.contains('walking'))return;
+    var k=Math.random(), r=w.getBoundingClientRect(), vx=mx, vy=my;
+    if(k<.45){
+      lookAt(r.left-400,r.top+r.height*.3);
+      setTimeout(function(){lookAt(r.right+400,r.top+r.height*.3);},650);
+      setTimeout(function(){lookAt(vx,vy);},1400);
+    }else if(k<.75)act(w,'wave');
+    else act(w,'hop');
+  },7000);
+})();
+})();
+</script>
+</body>
+</html>

@@ -1229,37 +1229,37 @@ if(rail){
   /* cada escena tiene datos reales de su seccion: dice el primero al entrar y, si lo tocas, sigue con los demas */
   var scenes=[
     {sec:'top', who:$('paponHero'), act:'hat', lines:[
-      '¡Howdy! Soy Tony. Te llevo a recorrer Frich, ¿de una?',
+      '¡Howdy! O sea… ¿qué hacé, loco? Soy Tony. ¿Te muestro Frich?',
       'Tres locales en Córdoba: Nueva Córdoba, Valle Escondido y Jesús María.',
-      'Smash burgers, papas onduladas y canastita yankee. Así somos.']},
+      'Smash burgers, papas onduladas y canastita yankee. Así somos, de una.']},
     {sec:'menu', who:float, act:'hop', lines:[
-      'Todas las America Burger vienen con papas incluidas, eh.',
-      'Las cinco clásicas también salen veganas, a $13.000.',
-      '¿Con hambre de más? El medallón extra sale $2.700.']},
+      'Todas las America Burger vienen con papas incluidas, ¿viste?',
+      '¿No comés carne? Las cinco clásicas salen veganas, a $13.000.',
+      '¿Hambre de cowboy? El medallón extra sale $2.700.']},
     {sec:'papas', who:$('paponPeek'), act:'wave', enter:'peek', lines:[
-      'Las papas son onduladas y vienen en canastita.',
-      '¿Querés más papas? El extra sale $2.900.',
+      'Mirá esas papas: onduladas y en canastita. Posta, lo más.',
+      '¿Querés más papas? El extra sale $2.900, loco.',
       '¿Aros de cebolla? También hay, a $3.500.']},
     {sec:'historia', who:$('paponLocal'), act:'hat', enter:'walk',
      el:'.storefront', f:.3, /* se activa con la vereda ya a la vista, no con el titulo */ lines:[
-      'Este es el local de Jesús María, en Paseo del Huerto 99.',
-      'Jesús María abre también al mediodía: de lunes a sábado, de 12 a 15.',
-      'De noche, mesas rojas en la vereda y el cartel prendido.']},
+      'Este es el de Jesús María, en Paseo del Huerto 99. Pasá nomás.',
+      'Acá abrimos también al mediodía: de lunes a sábado, de 12 a 15.',
+      'De noche, mesas rojas en la vereda y el cartel prendido. Una fiesta.']},
     {sec:'nosotros', who:float, act:'wave', lines:[
-      'Tres locales, todos en Córdoba.',
-      'Estos le ponen el buzo todos los días. Literal.',
+      'Tres locales, todos en Córdoba. Cordobeses de pura cepa.',
+      'Estos le ponen el buzo todos los días. Literal, mirá la foto.',
       'El neón está siempre prendido. Como yo.']},
     {sec:'resenas', who:float, act:'blush', lines:[
-      '4,4 estrellas con más de mil opiniones en Google.',
-      'Esto lo escribió la gente, eh. No nosotros.']},
+      '4,4 estrellas con más de mil opiniones en Google. ¡Mirá vos!',
+      'Esto lo escribió la gente, eh. Nosotros no tocamos nada.']},
     {sec:'sucursales', who:float, act:'point', lines:[
-      'Nueva Córdoba y Valle Escondido abren todos los días de 20 a 24.',
+      'Nueva Córdoba y Valle Escondido: todos los días de 20 a 24, loco.',
       'Jesús María abre también al mediodía, de lunes a sábado.',
-      'Tocá «Cómo llegar» y te abre la ruta directo.']},
+      'Tocá «Cómo llegar» y te abre la ruta directo. Ni te perdés.']},
     {sec:'franquicias', who:float, act:'hop', lines:[
-      '¿Un Frich en tu ciudad? El primer paso es el formulario.',
+      '¿Un Frich en tu ciudad? El primer paso es el formulario, compañero.',
       'Llenarlo no es una aprobación: es para conocerse.',
-      'Buscan socios que estén en el local, en el día a día.']},
+      'Buscan socios que estén en el local día a día. Con las botas puestas.']},
     {sec:'pedir', who:$('paponFinal'), act:'hop', lines:[
       'Pedís por WhatsApp y pasás a buscar. Así no esperás.',
       '¿Preferís una app? También estamos en Rappi y PedidosYa.',
@@ -1387,13 +1387,13 @@ if(rail){
         say(w,'¡Vamos! Te llevo al pedido.',2400);act(w,'spin');
         if(!current||current.sec!=='pedir')pendiente='¡Llegamos! Pedí por WhatsApp o llamá a tu local.';
       }else if(href.indexOf('wa.me')>=0){
-        say(w,nombre?'¡Una '+nombre+'! Te abro WhatsApp.':'¡Eso! Te abro WhatsApp.',3000);act(w,'spin');
+        say(w,nombre?'¡Una '+nombre+'! De una, te abro WhatsApp.':'¡Eso! Te abro WhatsApp.',3000);act(w,'spin');
       }else if(href.indexOf('tel:')===0){
         say(w,'¡Eso! Del otro lado te atienden.',3000);act(w,'spin');
       }else if(href.indexOf('rappi')>=0||href.indexOf('pedidosya')>=0){
-        say(w,'¡Que llegue calentito!',3000);act(w,'hop');
+        say(w,'¡Yeehaw! Que llegue calentito.',3000);act(w,'hop');
       }else if(href.indexOf('docs.google.com/forms')>=0){
-        say(w,'¡Suerte! Ojalá nos veamos en tu ciudad.',3400);act(w,'spin');
+        say(w,'¡Suerte, compañero! Ojalá nos veamos en tu ciudad.',3400);act(w,'spin');
       }else{
         say(w,'Escribinos por Insta, dale.',3000);act(w,'hop');
       }
@@ -1402,7 +1402,7 @@ if(rail){
 
   /* ---- si lo tocás, contesta ---- */
   function charla(w){
-    var s=current, txt='¡Howdy! Soy Tony.';
+    var s=current, txt='¡Howdy! O sea, ¿qué hacé? Soy Tony.';
     if(s&&s.lines){s.i=(s.i||0)%s.lines.length;txt=s.lines[s.i];s.i++;}
     say(w,txt,3800);act(w,Math.random()<.5?'hop':'hat');
   }

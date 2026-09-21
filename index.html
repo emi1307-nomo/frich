@@ -318,7 +318,7 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
   .neonlayer .nscript,.neonlayer .bulb{animation:none;opacity:1}
 }
 
-/* ---------- Papón, la mascota ---------- */
+/* ---------- Tony, la mascota (las clases internas siguen llamandose .papon / .pp-*) ---------- */
 /* capas: .paponwrap (posición y aparición) > .pp-rig (saltos, giro, inclinación) > svg (respiración) */
 .paponwrap{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .pp-rig{transform-origin:50% 100%;rotate:calc(var(--lean,0) * 1deg)}
@@ -328,8 +328,8 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
 .papon .eye{transform-box:fill-box;transform-origin:center;transition:transform .08s ease}
 .papon.blink .eye{transform:scaleY(.08)}
 .papon .pupil{transition:transform .14s ease-out}
-.papon .pp-arm{transform-box:view-box;transform-origin:143px 150px}
-.papon .pp-arml{transform-box:view-box;transform-origin:58px 150px;transition:transform .45s var(--ease)}
+.papon .pp-arm{transform-box:view-box;transform-origin:156px 164px}
+.papon .pp-arml{transform-box:view-box;transform-origin:44px 164px;transition:transform .45s var(--ease)}
 .papon .pp-cheek{opacity:.75;transform-box:fill-box;transform-origin:center;
   transition:opacity .3s ease,transform .3s var(--ease)}
 .papon .pp-o{opacity:0}
@@ -338,6 +338,10 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
 @keyframes wave{0%,100%{transform:rotate(0)}30%{transform:rotate(-28deg)}62%{transform:rotate(10deg)}}
 .paponwrap.point .pp-arml{transform:rotate(62deg)}
 .paponwrap.blush .pp-cheek{opacity:1;transform:scale(1.5)}
+/* el gesto de Tony: se saca el sombrero para saludar */
+.papon .pp-hat{transform-box:view-box;transform-origin:40px 100px}
+.paponwrap.hat .pp-hat{animation:hatTip .95s var(--ease)}
+@keyframes hatTip{0%,100%{transform:none}30%,62%{transform:translate(-2px,-13px) rotate(-15deg)}}
 .paponwrap.hop .pp-rig{animation:hop .7s var(--ease)}
 .paponwrap.spin .pp-rig{animation:spin .95s var(--ease)}
 .paponwrap.walking .pp-rig{animation:step .34s ease-in-out infinite}
@@ -470,6 +474,7 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
 .navmob a:active,.navmob a:focus-visible{background:var(--cream)}
 @media(max-width:959px){.navtoggle{display:flex}}
 @media(min-width:960px){.navmob{display:none!important}}
+.navin .btn.sm{gap:.3em}
 @media(max-width:420px){
   .navin{gap:10px;padding-left:16px}
   .logo i,.navin .btn .largo{display:none}
@@ -531,7 +536,7 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
         <img src="assets/hero-600.webp" srcset="assets/hero-600.webp 600w, assets/hero-960.webp 960w" sizes="(min-width:980px) 480px, 80vw"
           width="1200" height="900" alt="Hamburguesa doble con cheddar, lechuga, tomate y cebolla morada" fetchpriority="high">
       </div>
-      <div class="paponwrap" id="paponHero" data-bubble="left" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+      <div class="paponwrap" id="paponHero" data-bubble="left" role="button" tabindex="0" aria-label="Tony, la mascota. Tocalo y te cuenta algo de esta sección.">
         <div class="bubble" aria-hidden="true"></div>
       </div>
     </div>
@@ -973,7 +978,7 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
 <!-- ================= CTA FINAL ================= -->
 <section class="final" id="pedir">
   <div class="wrap inner">
-    <div class="paponwrap finalp" id="paponFinal" data-bubble="left" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+    <div class="paponwrap finalp" id="paponFinal" data-bubble="left" role="button" tabindex="0" aria-label="Tony, la mascota. Tocalo y te cuenta algo de esta sección.">
       <div class="bubble" aria-hidden="true"></div>
     </div>
     <p class="script">Don't wait</p>
@@ -1012,49 +1017,69 @@ footer.site .small{font-size:13px;opacity:.72;max-width:44ch;margin-top:10px}
   </div>
 </footer>
 
-<!-- Papón, la mascota. Se dibuja una vez y se clona donde haga falta. -->
+<!-- Tony, la mascota: smash burger cowboy con tonada cordobesa. Se dibuja una vez y se clona donde haga falta. -->
 <template id="papon-tpl">
 <svg class="papon" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <g stroke="#1E1713" stroke-linecap="round" stroke-linejoin="round">
-    <!-- piernas y zapatos -->
-    <path d="M84 250v34" fill="none" stroke-width="8"/>
-    <path d="M116 250v34" fill="none" stroke-width="8"/>
-    <ellipse cx="74" cy="290" rx="22" ry="12" fill="#E03127" stroke-width="5.5"/>
-    <ellipse cx="126" cy="290" rx="22" ry="12" fill="#E03127" stroke-width="5.5"/>
+    <!-- piernas y botas de cowboy -->
+    <path d="M84 238v34" fill="none" stroke-width="8"/>
+    <path d="M116 238v34" fill="none" stroke-width="8"/>
+    <path d="M75 266 L95 266 L96 302 L56 302 C56 293 63 289 72 289 L75 289 Z" fill="#7A4A2A" stroke-width="5"/>
+    <path d="M105 266 L125 266 L128 289 C137 289 144 293 144 302 L104 302 Z" fill="#7A4A2A" stroke-width="5"/>
+    <path d="M87 302 L96 302 L96 309 L89 309 Z" fill="#3E2616" stroke-width="4"/>
+    <path d="M104 302 L113 302 L111 309 L104 309 Z" fill="#3E2616" stroke-width="4"/>
+    <path d="M79 274l6 6 6-6M109 274l6 6 6-6" fill="none" stroke="#F2C14E" stroke-width="3"/>
     <!-- brazo izquierdo, el que señala -->
     <g class="pp-arml">
-      <path d="M58 150q-26 10-30 30" fill="none" stroke-width="8"/>
-      <circle cx="26" cy="186" r="12" fill="#FBF3E4" stroke-width="5"/>
+      <path d="M44 164q-24 8-28 28" fill="none" stroke-width="8"/>
+      <circle cx="14" cy="198" r="11" fill="#FBF3E4" stroke-width="5"/>
     </g>
     <!-- brazo derecho, el que saluda -->
     <g class="pp-arm">
-      <path d="M142 150q26-6 32-26" fill="none" stroke-width="8"/>
-      <circle cx="176" cy="118" r="12" fill="#FBF3E4" stroke-width="5"/>
+      <path d="M156 164q24-6 30-26" fill="none" stroke-width="8"/>
+      <circle cx="188" cy="132" r="11" fill="#FBF3E4" stroke-width="5"/>
     </g>
-    <!-- cuerpo de papa -->
-    <rect x="56" y="82" width="88" height="172" rx="22" fill="#F2C14E" stroke-width="6.5"/>
-    <!-- las ondas de la papa ondulada -->
-    <path d="M60 196h80M60 214h80M60 232h80" fill="none" stroke="#D9A63C" stroke-width="5" opacity=".9"/>
+    <!-- pan de abajo, medallon smash, cheddar y lechuga -->
+    <path d="M42 214 L158 214 L158 228 C158 238 150 242 140 242 L60 242 C50 242 42 238 42 228 Z" fill="#E9A23B" stroke-width="5.5"/>
+    <path d="M38 196 C38 188 44 186 52 186 L148 186 C156 186 162 188 162 196 L162 206 C162 214 156 216 148 216 L52 216 C44 216 38 214 38 206 Z" fill="#6E3B22" stroke-width="5.5"/>
+    <path d="M54 202h10M74 208h9M112 201h12M132 208h9" fill="none" stroke="#8E5433" stroke-width="3"/>
+    <path d="M40 182 L160 182 L160 190 C151 190 152 204 145 205 C138 206 140 192 129 192 L97 192 C90 192 92 209 84 209 C76 209 78 192 70 192 L40 192 Z" fill="#F2C14E" stroke-width="4.5"/>
+    <path d="M34 174 Q42 188 50 176 Q58 188 66 176 Q74 188 82 176 Q90 188 98 176 Q106 188 114 176 Q122 188 130 176 Q138 188 146 176 Q154 188 162 176 Q169 180 166 185 L34 185 Q30 180 34 174 Z" fill="#86BF4E" stroke-width="4.5"/>
+    <!-- pan de arriba con sesamo -->
+    <path d="M36 176 C36 122 64 98 100 98 C136 98 164 122 164 176 Z" fill="#E9A23B" stroke-width="6"/>
+    <path d="M52 150 C54 132 60 120 70 112" fill="none" stroke="#F6C66B" stroke-width="6"/>
+    <g fill="#FBF3E4" stroke-width="2.5">
+      <ellipse cx="52" cy="128" rx="4.2" ry="2.6" transform="rotate(-35 52 128)"/>
+      <ellipse cx="148" cy="128" rx="4.2" ry="2.6" transform="rotate(35 148 128)"/>
+      <ellipse cx="50" cy="164" rx="4.2" ry="2.6" transform="rotate(-10 50 164)"/>
+      <ellipse cx="150" cy="164" rx="4.2" ry="2.6" transform="rotate(10 150 164)"/>
+    </g>
     <!-- cara -->
+    <path d="M70 110q11-6 22-1M108 109q11-5 22 1" fill="none" stroke-width="4.5"/>
     <g class="eyes">
-      <circle class="eye" cx="82" cy="132" r="16" fill="#fff" stroke-width="4.5"/>
-      <circle class="eye" cx="118" cy="132" r="16" fill="#fff" stroke-width="4.5"/>
-      <circle class="pupil" cx="82" cy="133" r="6.6" fill="#1E1713" stroke="none"/>
-      <circle class="pupil" cx="118" cy="133" r="6.6" fill="#1E1713" stroke="none"/>
+      <circle class="eye" cx="82" cy="128" r="14" fill="#fff" stroke-width="4.5"/>
+      <circle class="eye" cx="118" cy="128" r="14" fill="#fff" stroke-width="4.5"/>
+      <circle class="pupil" cx="82" cy="129" r="6" fill="#1E1713" stroke="none"/>
+      <circle class="pupil" cx="118" cy="129" r="6" fill="#1E1713" stroke="none"/>
     </g>
-    <path class="pp-smile" d="M84 166q16 16 32 0" fill="none" stroke-width="5.5"/>
-    <ellipse class="pp-o" cx="100" cy="171" rx="9" ry="10" fill="#7A2A1F" stroke-width="4.5"/>
-    <!-- mejillas -->
-    <circle class="pp-cheek" cx="66" cy="156" r="6" fill="#E8907F" stroke="none"/>
-    <circle class="pp-cheek" cx="134" cy="156" r="6" fill="#E8907F" stroke="none"/>
-    <!-- gorrito de diner -->
-    <path d="M60 84q0-34 40-34t40 34z" fill="#FBF3E4" stroke-width="6"/>
-    <rect x="54" y="78" width="92" height="14" rx="7" fill="#E03127" stroke-width="5.5"/>
+    <circle class="pp-cheek" cx="54" cy="146" r="6" fill="#E8907F" stroke="none"/>
+    <circle class="pp-cheek" cx="146" cy="146" r="6" fill="#E8907F" stroke="none"/>
+    <path class="pp-smile" d="M87 161q13 11 26 0" fill="none" stroke-width="5"/>
+    <ellipse class="pp-o" cx="100" cy="166" rx="7" ry="7" fill="#7A2A1F" stroke-width="4"/>
+    <!-- bigote -->
+    <path d="M100 151 C92 145 78 145 70 153 C66 157 64 161 70 161 C76 157 86 157 100 159 C114 157 124 157 130 161 C136 161 134 157 130 153 C122 145 108 145 100 151 Z" fill="#6B3A22" stroke-width="4"/>
+    <!-- sombrero de cowboy: se lo saca para saludar -->
+    <g class="pp-hat">
+      <path d="M62 92 C58 64 64 40 78 36 C88 34 92 46 100 46 C108 46 112 34 122 36 C136 40 142 64 138 92 Z" fill="#C97D3A" stroke-width="5.5"/>
+      <path d="M63 68 C86 74 114 74 137 68 L138 81 C114 87 86 87 62 81 Z" fill="#E03127" stroke-width="4.5"/>
+      <path d="M100 68.5l2.4 5 5.4.6-4 3.7 1.1 5.3-4.9-2.7-4.8 2.7 1.1-5.3-4-3.7 5.4-.6z" fill="#F2C14E" stroke-width="2"/>
+      <path d="M20 100 C38 112 162 112 180 100 C178 90 150 86 100 88 C50 86 22 90 20 100 Z" fill="#B86B2E" stroke-width="5.5"/>
+    </g>
   </g>
 </svg>
 </template>
 
-<div class="paponwrap floatp" id="paponFloat" data-bubble="right" role="button" tabindex="0" aria-label="Papón, la mascota. Tocalo para que hable.">
+<div class="paponwrap floatp" id="paponFloat" data-bubble="right" role="button" tabindex="0" aria-label="Tony, la mascota. Tocalo y te cuenta algo de esta sección.">
   <div class="bubble" aria-hidden="true"></div>
 </div>
 
@@ -1137,7 +1162,7 @@ if(rail){
   setTimeout(cruzar,1800);
 })();
 
-/* ---------- Papón, la mascota: narra el recorrido ---------- */
+/* ---------- Tony, la mascota: narra el recorrido y cuenta datos de cada seccion ---------- */
 (function(){
   var tpl=document.getElementById('papon-tpl');
   var wraps=[].slice.call(document.querySelectorAll('.paponwrap'));
@@ -1153,8 +1178,8 @@ if(rail){
   });
   var svgs=[].slice.call(document.querySelectorAll('.papon'));
 
-  /* ---- la mirada: sigue el cursor, o lo que Papón esté comentando ---- */
-  var mx=innerWidth/2,my=innerHeight/2,raf=null,MAX=5.6;
+  /* ---- la mirada: sigue el cursor, o lo que Tony esté comentando ---- */
+  var mx=innerWidth/2,my=innerHeight/2,raf=null,MAX=5;
   function track(){
     raf=null;
     svgs.forEach(function(s){
@@ -1191,7 +1216,7 @@ if(rail){
     clearTimeout(w._t);
     w._t=setTimeout(function(){w.classList.remove('talk');},ms||3200);
   }
-  var DUR={hop:720,spin:980,wave:1500,blush:3400,point:3400};
+  var DUR={hop:720,spin:980,wave:1500,blush:3400,point:3400,hat:950};
   function act(w,name){
     if(!w||!name)return;
     w.classList.remove(name);void w.offsetWidth;w.classList.add(name);
@@ -1201,17 +1226,44 @@ if(rail){
 
   /* ---- las escenas: una por sección ---- */
   var float=$('paponFloat');
+  /* cada escena tiene datos reales de su seccion: dice el primero al entrar y, si lo tocas, sigue con los demas */
   var scenes=[
-    {sec:'top',        who:$('paponHero'),  line:'¡Eyy! Soy Papón. ¿Te muestro el lugar?',      act:'wave'},
-    {sec:'menu',       who:float,           line:'Primero lo importante, ¿viste? Las burgers.',  act:'hop'},
-    {sec:'papas',      who:$('paponPeek'),  line:'Y estas son mis primas. Onduladas, como yo.', act:'wave', enter:'peek'},
-    {sec:'historia',   who:$('paponLocal'), line:'Esta es mi casa. De noche se pone linda.',     act:'wave', enter:'walk',
-     el:'.storefront', f:.3}, /* se activa con la vereda ya a la vista, no con el titulo */
-    {sec:'nosotros',   who:float,           line:'Estos son los que me fríen. Con cariño, eh.',  act:'wave'},
-    {sec:'resenas',    who:float,           line:'Esto lo escribió la gente, eh. No yo.',        act:'blush'},
-    {sec:'sucursales', who:float,           line:'Tenemos tres. Elegí la que te quede cerca.',   act:'point'},
-    {sec:'franquicias',who:float,           line:'¿Un Frich en tu ciudad? Yo me mudo con vos.',  act:'hop'},
-    {sec:'pedir',      who:$('paponFinal'), line:'¿Y? ¿Pedimos?',                                act:'hop'}
+    {sec:'top', who:$('paponHero'), act:'hat', lines:[
+      '¡Howdy! Soy Tony. Te llevo a recorrer Frich, ¿de una?',
+      'Tres locales en Córdoba: Nueva Córdoba, Valle Escondido y Jesús María.',
+      'Smash burgers, papas onduladas y canastita yankee. Así somos.']},
+    {sec:'menu', who:float, act:'hop', lines:[
+      'Todas las America Burger vienen con papas incluidas, eh.',
+      'Las cinco clásicas también salen veganas, a $13.000.',
+      '¿Con hambre de más? El medallón extra sale $2.700.']},
+    {sec:'papas', who:$('paponPeek'), act:'wave', enter:'peek', lines:[
+      'Las papas son onduladas y vienen en canastita.',
+      '¿Querés más papas? El extra sale $2.900.',
+      '¿Aros de cebolla? También hay, a $3.500.']},
+    {sec:'historia', who:$('paponLocal'), act:'hat', enter:'walk',
+     el:'.storefront', f:.3, /* se activa con la vereda ya a la vista, no con el titulo */ lines:[
+      'Este es el local de Jesús María, en Paseo del Huerto 99.',
+      'Jesús María abre también al mediodía: de lunes a sábado, de 12 a 15.',
+      'De noche, mesas rojas en la vereda y el cartel prendido.']},
+    {sec:'nosotros', who:float, act:'wave', lines:[
+      'Tres locales, todos en Córdoba.',
+      'Estos le ponen el buzo todos los días. Literal.',
+      'El neón está siempre prendido. Como yo.']},
+    {sec:'resenas', who:float, act:'blush', lines:[
+      '4,4 estrellas con más de mil opiniones en Google.',
+      'Esto lo escribió la gente, eh. No nosotros.']},
+    {sec:'sucursales', who:float, act:'point', lines:[
+      'Nueva Córdoba y Valle Escondido abren todos los días de 20 a 24.',
+      'Jesús María abre también al mediodía, de lunes a sábado.',
+      'Tocá «Cómo llegar» y te abre la ruta directo.']},
+    {sec:'franquicias', who:float, act:'hop', lines:[
+      '¿Un Frich en tu ciudad? El primer paso es el formulario.',
+      'Llenarlo no es una aprobación: es para conocerse.',
+      'Buscan socios que estén en el local, en el día a día.']},
+    {sec:'pedir', who:$('paponFinal'), act:'hop', lines:[
+      'Pedís por WhatsApp y pasás a buscar. Así no esperás.',
+      '¿Preferís una app? También estamos en Rappi y PedidosYa.',
+      'O llamá directo a tu local: abajo están los tres.']}
   ].filter(function(s){s.el=s.el?document.querySelector(s.el):$(s.sec);s.f=s.f||.45;return s.who&&s.el;});
   var current=null, actor=null, dicho={}, pendiente=null;
 
@@ -1249,7 +1301,7 @@ if(rail){
       if(current!==s)return;
       if(s.sec==='pedir'&&pendiente){act(s.who,'spin');say(s.who,pendiente,4200);pendiente=null;return;}
       act(s.who,s.act);
-      if(!dicho[s.sec]){dicho[s.sec]=1;say(s.who,s.line,3800);}
+      if(!dicho[s.sec]){dicho[s.sec]=1;s.i=1;say(s.who,s.lines[0],3800);}
     },espera);
   }
   function detectar(){
@@ -1349,13 +1401,10 @@ if(rail){
   });
 
   /* ---- si lo tocás, contesta ---- */
-  var frases=['¡Eyy! ¿Todo bien?','Vení que se enfrían.','¿Con papas? Obvio.',
-              'Yo que vos, pedía ya.','La canastita es mía, eh.','A la noche abrimos los tres, te espero.'];
-  var last=-1;
   function charla(w){
-    var i;
-    do{i=Math.floor(Math.random()*frases.length);}while(i===last&&frases.length>1);
-    last=i;say(w,frases[i],2800);act(w,'hop');
+    var s=current, txt='¡Howdy! Soy Tony.';
+    if(s&&s.lines){s.i=(s.i||0)%s.lines.length;txt=s.lines[s.i];s.i++;}
+    say(w,txt,3800);act(w,Math.random()<.5?'hop':'hat');
   }
   wraps.forEach(function(w){
     w.addEventListener('click',function(){charla(w);});
@@ -1373,7 +1422,8 @@ if(rail){
       lookAt(r.left-400,r.top+r.height*.3);
       setTimeout(function(){lookAt(r.right+400,r.top+r.height*.3);},650);
       setTimeout(function(){lookAt(vx,vy);},1400);
-    }else if(k<.75)act(w,'wave');
+    }else if(k<.65)act(w,'wave');
+    else if(k<.85)act(w,'hat');
     else act(w,'hop');
   },7000);
 })();

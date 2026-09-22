@@ -237,6 +237,10 @@ if(rail){
       'El formulario tiene 16 preguntas, compañero. Tomate tu tiempo.',
       'Te preguntan si contás con el capital y en qué plazo querés abrir.',
       'Y si vos o un socio estaría en el local, día a día.']},
+    {sec:'perdido', who:$('paponPerdido'), act:'hat', lines:[
+      'Uy, esta página no existe, compañero. Me perdí yo también.',
+      'Tocá «Volver al inicio» y arrancamos de nuevo.',
+      'Tranqui: las hamburguesas siguen donde siempre, loco.']},
     {sec:'pedir', who:$('paponFinal'), act:'hop', lines:[
       'Pedís por WhatsApp y pasás a buscar. Así no esperás.',
       '¿Preferís una app? También estamos en Rappi y PedidosYa.',

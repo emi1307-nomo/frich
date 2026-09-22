@@ -508,3 +508,18 @@ section.blk.primera{padding-top:clamp(128px,14vw,176px)}
 
 /* en telefonos chicos, los botones largos del formulario entran en una sola linea */
 @media(max-width:420px){.fcta .btn,.preguntas .btn{font-size:12.5px;padding:14px 18px;letter-spacing:.04em;white-space:nowrap}}
+
+/* ---------- 404: Tony perdido ---------- */
+.perdido{min-height:78vh;display:grid;align-items:center}
+.perdin{display:grid;gap:34px;grid-template-columns:1fr;align-items:center;justify-items:center;text-align:center}
+@media(min-width:800px){.perdin{grid-template-columns:auto 1fr;justify-items:start;text-align:left;gap:64px}}
+.perdidop{width:clamp(150px,20vw,230px)}
+.perdido .head{max-width:52ch}
+.perdido .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:799px){
+  .perdidop{margin-top:84px} /* lugar para el globo, que no quede bajo la barra */
+  .perdido .cta{justify-content:center}
+  .perdidop.paponwrap .bubble{left:50%;transform:translate(-50%,10px) scale(.88);transform-origin:50% 100%}
+  .perdidop.paponwrap .bubble::after{left:50%;transform:translateX(-50%)}
+  .perdidop.paponwrap.talk .bubble{transform:translate(-50%,0) scale(1)}
+}

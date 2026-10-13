@@ -12,7 +12,7 @@
 <link rel="preload" as="image" href="assets/hero-600.webp" imagesrcset="assets/hero-600.webp 600w, assets/hero-960.webp 960w" imagesizes="(min-width:980px) 480px, 80vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/sitio.css">
 </head>
 <body>
@@ -440,25 +440,58 @@
 </section>
 
 <!-- ================= CTA FINAL ================= -->
-<section class="final" id="pedir">
+<section class="final comanda" id="pedir">
   <div class="wrap inner">
-    <div class="paponwrap finalp" id="paponFinal" data-bubble="left" role="button" tabindex="0" aria-label="Tony, la mascota. Tocalo y te cuenta algo de esta sección.">
-      <div class="bubble" aria-hidden="true"></div>
+    <div class="pedir-txt">
+      <p class="script">Don't wait</p>
+      <h2>Pedí y pasá a buscar</h2>
+      <p>El local se llena y la espera puede ser larga. Si pedís antes, llegás y está lista.</p>
+      <div class="cta">
+        <a class="btn" id="waPedido" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      </div>
+      <p class="apps">O llamá directo a tu local:</p>
+      <div class="locs">
+        <a class="btn sm ghost" href="tel:+543516142090">Nueva Córdoba</a>
+        <a class="btn sm ghost" href="tel:+543512151167">Valle Escondido</a>
+        <a class="btn sm ghost" href="tel:+543525555050">Jesús María</a>
+      </div>
+      <p class="apps">También estamos en <a href="https://www.rappi.com.ar/restaurantes/132532-frich-hamburgueseria" target="_blank" rel="noopener">Rappi</a>
+        y <a href="https://www.pedidosya.com.ar/restaurantes/cordoba/frich-burger-menu" target="_blank" rel="noopener">PedidosYa</a>.</p>
     </div>
-    <p class="script">Don't wait</p>
-    <h2>Pedí y pasá a buscar</h2>
-    <p>El local se llena y la espera puede ser larga. Si pedís antes, llegás y está lista.</p>
-    <div class="cta">
-      <a class="btn" id="waPedido" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+
+    <!-- la comandera: imprime la comanda cuando llegás a esta sección -->
+    <div class="comandera">
+      <div class="cuerpo"><span class="led" aria-hidden="true"></span><span class="marca" aria-hidden="true">FRICH · COMANDERA</span>
+        <button class="otra" type="button" disabled>Otra comanda</button></div>
+      <div class="ranura" aria-hidden="true"></div>
+      <div class="salida">
+        <div class="ticket">
+          <div aria-hidden="true">
+            <div class="r cen grande">FRICH 'N FRIES</div>
+            <div class="r cen chica">COMANDA · PARA RETIRAR</div>
+            <div class="r linea doble"></div>
+            <div class="r"><span>PEDIDO #<b class="t-num">0001</b></span><span class="t-hora">20:00</span></div>
+            <div class="r"><span>A NOMBRE DE: VOS</span><span>YA</span></div>
+            <div class="r linea"></div>
+            <div class="t-items"></div>
+            <div class="r linea"></div>
+            <div class="r total"><span>TOTAL</span><span>¡QUÉ HAMBRE!</span></div>
+            <div class="r linea doble"></div>
+            <div class="r espacio"></div>
+          </div>
+          <a class="codigo" href="https://wa.me/5493516142090?text=Hola%20Frich%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+            <div class="barras" aria-hidden="true"></div>
+            <span>TOCÁ EL CÓDIGO <i aria-hidden="true">→</i> PEDÍ POR WHATSAPP</span>
+          </a>
+          <div class="sello" aria-hidden="true">¡Lista!</div>
+        </div>
+      </div>
     </div>
-    <p class="apps">O llamá directo a tu local:</p>
-    <div class="locs">
-      <a class="btn sm ghost" href="tel:+543516142090">Nueva Córdoba</a>
-      <a class="btn sm ghost" href="tel:+543512151167">Valle Escondido</a>
-      <a class="btn sm ghost" href="tel:+543525555050">Jesús María</a>
-    </div>
-    <p class="apps">También estamos en <a href="https://www.rappi.com.ar/restaurantes/132532-frich-hamburgueseria" target="_blank" rel="noopener">Rappi</a>
-      y <a href="https://www.pedidosya.com.ar/restaurantes/cordoba/frich-burger-menu" target="_blank" rel="noopener">PedidosYa</a>.</p>
+  </div>
+
+  <div class="mesada" aria-hidden="true"></div>
+  <div class="paponwrap finalp moto" id="paponFinal" data-bubble="left" role="button" tabindex="0" aria-label="Tony en su moto de delivery. Tocalo y te cuenta algo de esta sección.">
+    <div class="bubble" aria-hidden="true"></div>
   </div>
 </section>
 

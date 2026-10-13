@@ -244,7 +244,9 @@ if(rail){
     {sec:'pedir', who:$('paponFinal'), act:'hop', lines:[
       'Pedís por WhatsApp y pasás a buscar. Así no esperás.',
       '¿Preferís una app? También estamos en Rappi y PedidosYa.',
-      'O llamá directo a tu local: abajo están los tres.']}
+      'O llamá directo a tu local: abajo están los tres.']
+      /* la comanda está solo en Inicio y Sucursales */
+      .concat(document.querySelector('.comandera')?['¿Viste la comanda? Tocá el código de barras y te abre WhatsApp.']:[])}
   ].filter(function(s){s.el=s.el?document.querySelector(s.el):$(s.sec);s.f=s.f||.45;return s.who&&s.el;});
   var current=null, actor=null, dicho={}, pendiente=null;
 
@@ -394,10 +396,233 @@ if(rail){
     });
   });
 
+  /* ---- la comanda: se imprime al llegar al pedido, cae el sello y Tony sale en moto por la mesada ---- */
+  (function(){
+    var cmd=document.querySelector('.comandera');
+    if(!cmd)return;
+    var ticket=cmd.querySelector('.ticket'), items=ticket.querySelector('.t-items'), sello=ticket.querySelector('.sello'),
+        cuerpo=cmd.querySelector('.cuerpo'), otra=cmd.querySelector('.otra'), moto=$('paponFinal');
+    if(moto&&!moto.classList.contains('moto'))moto=null;
+
+    /* Tony en la moto es un dibujo propio: de perfil, sentado, con la mochila en la espalda.
+       Mismo viewBox que la moto (420x320, el piso en y=320). Reemplaza al Tony parado en esta escena,
+       y conserva las clases de ojos, boca, brazo y sombrero para que mire, hable, salude y se saque el sombrero. */
+    if(moto){
+      var rig=moto.querySelector('.pp-rig'), vieja=rig.querySelector('.papon'), k=svgs.indexOf(vieja);
+      rig.innerHTML=`<svg class="papon mt" viewBox="0 0 420 320" aria-hidden="true">
+  <g stroke="#1E1713" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="214" cy="318" rx="176" ry="6" fill="rgba(30,23,19,.22)" stroke="none"/>
+    <g class="mt-humo" fill="#FBF3E4" stroke="none"><circle cx="46" cy="294" r="9"/><circle cx="46" cy="294" r="11"/><circle cx="46" cy="294" r="8"/></g>
+    <g class="mt-rayas" fill="none" stroke="#FBF3E4" stroke-width="5"><path d="M-70 120h64M-96 190h80M-58 252h56"/></g>
+    <path class="mt-luz" d="M334 168 L470 128 L470 214 Z" fill="#F2C14E" stroke="none"/>
+    <!-- caño de escape y ruedas -->
+    <path d="M58 296 L138 290" fill="none" stroke-width="13"/>
+    <path d="M58 296 L138 290" fill="none" stroke="#9A918A" stroke-width="5"/>
+    <circle cx="96" cy="286" r="34" fill="#1E1713"/><circle cx="96" cy="286" r="16" fill="#FBF3E4" stroke-width="4"/>
+    <path class="mt-rayos" d="M96 271v30M81 286h30" fill="none" stroke-width="3.5"/>
+    <circle cx="336" cy="286" r="34" fill="#1E1713"/><circle cx="336" cy="286" r="16" fill="#FBF3E4" stroke-width="4"/>
+    <path class="mt-rayos" d="M336 271v30M321 286h30" fill="none" stroke-width="3.5"/>
+    <g class="mt-cuerpo">
+      <path d="M292 270 C298 238 372 236 386 268 L374 273 C364 250 310 252 304 274 Z" fill="#E03127" stroke-width="5"/>
+      <path d="M232 262 L302 262 L298 278 L228 278 Z" fill="#B8231B" stroke-width="5"/>
+      <path d="M278 272 C298 240 304 204 298 160 L320 156 C330 204 322 248 302 276 Z" fill="#E03127" stroke-width="5.5"/>
+      <path d="M311 160 L299 100" fill="none" stroke-width="9"/>
+      <path d="M303 98 L264 101" fill="none" stroke-width="10"/>
+      <path d="M288 99 L270 100" fill="none" stroke="#F2C14E" stroke-width="5"/>
+      <path d="M298 98 L304 74" fill="none" stroke-width="4"/>
+      <ellipse cx="305" cy="68" rx="7" ry="9" fill="#9FE2EE" stroke-width="4"/>
+      <circle cx="326" cy="170" r="12" fill="#F2C14E" stroke-width="5"/>
+      <path d="M44 262 C40 226 66 206 110 204 L230 206 C244 206 250 216 248 230 L244 272 L64 276 C52 276 46 272 44 262 Z" fill="#E03127" stroke-width="5.5"/>
+      <path d="M70 244 L230 240" fill="none" stroke="#FBF3E4" stroke-width="6"/>
+      <path d="M40 236 L50 234 L52 250 L42 252 Z" fill="#F2C14E" stroke-width="4"/>
+      <path d="M76 206 C80 193 108 189 150 189 L224 191 C236 191 240 199 236 207 Z" fill="#1E1713" stroke-width="5"/>
+    </g>
+    <!-- Tony sentado -->
+    <g class="mt-tony">
+      <!-- la mochila, en la espalda -->
+      <path d="M26 70 L44 58 L142 58 L130 70 Z" fill="#B8231B" stroke-width="5"/>
+      <rect x="26" y="70" width="104" height="96" rx="10" fill="#E03127" stroke-width="5"/>
+      <path d="M36 82 L120 82" fill="none" stroke="#B8231B" stroke-width="4"/>
+      <path d="M74 90l3.2 6.6 7.2.8-5.3 4.9 1.5 7.1-6.6-3.7-6.5 3.7 1.4-7.1-5.3-4.9 7.2-.8z" fill="#F2C14E" stroke-width="2"/>
+      <text x="74" y="138" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="27" letter-spacing="1" fill="#FBF3E4" stroke="none">FRICH</text>
+      <text x="74" y="157" text-anchor="middle" font-family="Pacifico, cursive" font-size="12" fill="#F2C14E" stroke="none">'n Fries</text>
+      <!-- piernas dobladas: la de atrás más oscura, botas apoyadas en el piso de la moto -->
+      <path d="M192 186 C206 188 222 184 236 176 L242 234" fill="none" stroke-width="7"/>
+      <g transform="translate(-12 -4)">
+        <path d="M247 234 L261 234 L262 249 C271 249 283 252 287 262 L245 262 Z" fill="#5C3820" stroke-width="4.5"/>
+        <path d="M245 262 L254 262 L253 267 L246 267 Z" fill="#2E1C10" stroke-width="3.5"/>
+      </g>
+      <path d="M206 186 C220 188 236 186 248 178 L254 236" fill="none" stroke-width="7"/>
+      <path d="M247 234 L261 234 L262 249 C271 249 283 252 287 262 L245 262 Z" fill="#7A4A2A" stroke-width="4.5"/>
+      <path d="M245 262 L254 262 L253 267 L246 267 Z" fill="#3E2616" stroke-width="3.5"/>
+      <path d="M250 241 l5 5 5-5" fill="none" stroke="#F2C14E" stroke-width="2.5"/>
+      <!-- el cuerpo: la misma hamburguesa de siempre, a escala -->
+      <g transform="translate(94 -7.4) scale(.82)">
+        <path d="M42 214 L158 214 L158 228 C158 238 150 242 140 242 L60 242 C50 242 42 238 42 228 Z" fill="#E9A23B" stroke-width="5.5"/>
+        <path d="M38 196 C38 188 44 186 52 186 L148 186 C156 186 162 188 162 196 L162 206 C162 214 156 216 148 216 L52 216 C44 216 38 214 38 206 Z" fill="#6E3B22" stroke-width="5.5"/>
+        <path d="M54 202h10M74 208h9M112 201h12M132 208h9" fill="none" stroke="#8E5433" stroke-width="3"/>
+        <path d="M40 182 L160 182 L160 190 C151 190 152 204 145 205 C138 206 140 192 129 192 L97 192 C90 192 92 209 84 209 C76 209 78 192 70 192 L40 192 Z" fill="#F2C14E" stroke-width="4.5"/>
+        <path d="M34 174 Q42 188 50 176 Q58 188 66 176 Q74 188 82 176 Q90 188 98 176 Q106 188 114 176 Q122 188 130 176 Q138 188 146 176 Q154 188 162 176 Q169 180 166 185 L34 185 Q30 180 34 174 Z" fill="#86BF4E" stroke-width="4.5"/>
+        <path d="M36 176 C36 122 64 98 100 98 C136 98 164 122 164 176 Z" fill="#E9A23B" stroke-width="6"/>
+        <path d="M52 150 C54 132 60 120 70 112" fill="none" stroke="#F6C66B" stroke-width="6"/>
+        <g fill="#FBF3E4" stroke-width="2.5">
+          <ellipse cx="44" cy="140" rx="4.2" ry="2.6" transform="rotate(-30 44 140)"/>
+          <ellipse cx="50" cy="166" rx="4.2" ry="2.6" transform="rotate(-10 50 166)"/>
+        </g>
+        <!-- la cara de siempre, girada tres cuartos hacia adelante (corrida hacia el frente y un poco más angosta) -->
+        <g transform="translate(122 0) scale(.78 1) translate(-100 0)">
+          <path d="M70 110q11-6 22-1M108 109q11-5 22 1" fill="none" stroke-width="4.5"/>
+          <g class="eyes">
+            <circle class="eye" cx="82" cy="128" r="14" fill="#fff" stroke-width="4.5"/>
+            <circle class="eye" cx="118" cy="128" r="14" fill="#fff" stroke-width="4.5"/>
+            <circle class="pupil" cx="86" cy="129" r="6" fill="#1E1713" stroke="none"/>
+            <circle class="pupil" cx="122" cy="129" r="6" fill="#1E1713" stroke="none"/>
+          </g>
+          <circle class="pp-cheek" cx="54" cy="146" r="6" fill="#E8907F" stroke="none"/>
+          <circle class="pp-cheek" cx="146" cy="146" r="6" fill="#E8907F" stroke="none"/>
+          <path class="pp-smile" d="M87 161q13 11 26 0" fill="none" stroke-width="5"/>
+          <ellipse class="pp-o" cx="100" cy="166" rx="7" ry="7" fill="#7A2A1F" stroke-width="4"/>
+          <path d="M100 151 C92 145 78 145 70 153 C66 157 64 161 70 161 C76 157 86 157 100 159 C114 157 124 157 130 161 C136 161 134 157 130 153 C122 145 108 145 100 151 Z" fill="#6B3A22" stroke-width="4"/>
+        </g>
+      </g>
+      <!-- la correa de la mochila: baja por el costado de la espalda y vuelve a la caja -->
+      <path d="M128 88 C140 94 150 112 156 140 C146 148 136 151 128 152" fill="none" stroke-width="10"/>
+      <path d="M128 88 C140 94 150 112 156 140 C146 148 136 151 128 152" fill="none" stroke="#5A4A40" stroke-width="3.5"/>
+      <!-- el sombrero de siempre, en el mismo lugar que en el Tony parado; la estrella mira hacia adelante -->
+      <g class="pp-hat"><g transform="translate(100.6 -7.4) scale(.82)">
+        <path d="M62 92 C58 64 64 40 78 36 C88 34 92 46 100 46 C108 46 112 34 122 36 C136 40 142 64 138 92 Z" fill="#C97D3A" stroke-width="5.5"/>
+        <path d="M63 68 C86 74 114 74 137 68 L138 81 C114 87 86 87 62 81 Z" fill="#E03127" stroke-width="4.5"/>
+        <path d="M112 68.5l2.4 5 5.4.6-4 3.7 1.1 5.3-4.9-2.7-4.8 2.7 1.1-5.3-4-3.7 5.4-.6z" fill="#F2C14E" stroke-width="2"/>
+        <path d="M20 100 C38 112 162 112 180 100 C178 90 150 86 100 88 C50 86 22 90 20 100 Z" fill="#B86B2E" stroke-width="5.5"/>
+      </g></g>
+      <!-- el brazo de adelante, con la mano en el manubrio -->
+      <g class="pp-arm">
+        <path d="M224 140 C248 146 266 128 273 107" fill="none" stroke-width="7"/>
+        <circle cx="276" cy="101" r="8.5" fill="#FBF3E4" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+</svg>`;
+      if(k>=0)svgs[k]=rig.querySelector('.papon');
+    }
+
+    var PEDIDOS=['TU SMASH FAVORITA','CALIFORNIA','GRAND BACON','BIG EM','BELL PEPPER'], n=0, ocupado=false;
+    function dos(x){return (x<10?'0':'')+x;}
+    function pausa(ms){return new Promise(function(r){setTimeout(r,ms);});}
+    function armar(){
+      items.innerHTML='<div class="r b"><span>1x '+PEDIDOS[n%PEDIDOS.length]+'</span><span>✓</span></div>'+
+        '<div class="r sub">papas incluidas</div>'+
+        '<div class="r b"><span>1x CERO ESPERA</span><span>✓</span></div>';
+      ticket.querySelector('.t-num').textContent=String(1000+Math.floor(Math.random()*9000)).slice(1);
+      var d=new Date();
+      ticket.querySelector('.t-hora').textContent=dos(d.getHours())+':'+dos(d.getMinutes());
+      ticket.style.setProperty('--sello-y',(ticket.querySelector('.espacio').offsetTop+2)+'px');
+    }
+    function recorte(px){return 'inset(0 0 '+px+'px 0)';}
+
+    /* sale de a un renglón y a los tirones, como una impresora térmica */
+    async function imprimir(){
+      sello.classList.remove('cae');ticket.classList.remove('cortado');
+      var H=ticket.offsetHeight;
+      if(reduce){ticket.style.clipPath='none';ticket.classList.add('cortado');sello.classList.add('cae');return;}
+      var falta=H;
+      ticket.style.clipPath=recorte(falta);
+      cuerpo.classList.add('trabaja');
+      await pausa(300);
+      var rs=ticket.querySelectorAll('.r,.codigo');
+      for(var i=0;i<rs.length;i++){
+        var meta=H-(rs[i].offsetTop+rs[i].offsetHeight+2);
+        if(meta>=falta)continue;
+        await ticket.animate([{clipPath:recorte(falta)},{clipPath:recorte(meta)}],
+          {duration:70+Math.random()*50,easing:'steps(3, end)',fill:'forwards'}).finished;
+        falta=meta;ticket.style.clipPath=recorte(falta);
+        ticket.getAnimations().forEach(function(a){a.cancel();});
+        await pausa(20+Math.random()*50);
+      }
+      ticket.style.clipPath='none';
+      cuerpo.classList.remove('trabaja');
+      ticket.classList.add('cortado');
+      await pausa(320);
+      sello.classList.add('cae');
+      await pausa(280);
+      ticket.animate([{transform:'rotate(0)'},{transform:'rotate(1.6deg)'},{transform:'rotate(-1deg)'},{transform:'rotate(.5deg)'},{transform:'rotate(0)'}],
+        {duration:1400,easing:'ease-out'});
+    }
+
+    /* Tony arranca con una willy, cruza la mesada, sale por la derecha y vuelve a estacionar */
+    var FRASES=[
+      ['¡Lista! Sale calentita. ¡Yeehaw!','¿No podés venir? Pedila por Rappi o PedidosYa y te la llevan.'],
+      ['¡Abran cancha, que sale otra!','¿Viste? Si pedís antes, llegás y está lista.'],
+      ['¡Sale con fritas, compañero!','Volví. ¿Y vos, ya pediste?'],
+      ['¡Yeehaw! ¡Agarrate el sombrero!','Tocá el código de la comanda y te abre WhatsApp.']
+    ], paseo=0, tPaseo=null;
+    async function rodar(){
+      if(!moto||reduce)return;
+      var frase=FRASES[paseo++%FRASES.length];
+      var sec=moto.closest('.final'), sr=sec.getBoundingClientRect(), r=moto.getBoundingClientRect();
+      var izq=r.left-sr.left, ida=sr.width-izq+60, vuelta=-(izq+r.width+60);
+      say(moto,frase[0],2400);
+      act(moto,'spin');
+      moto.classList.add('rodando');
+      await pausa(650);
+      var a=moto.animate([{transform:'translateX(0)'},{transform:'translateX('+ida+'px)'}],
+        {duration:2300,easing:'cubic-bezier(.55,0,.8,.6)',fill:'forwards'});
+      await a.finished;
+      moto.classList.remove('talk');
+      await pausa(1300);
+      var b=moto.animate([{transform:'translateX('+vuelta+'px)'},{transform:'translateX(0)'}],
+        {duration:1900,easing:'cubic-bezier(.2,.6,.3,1)',fill:'forwards'});
+      await b.finished;
+      a.cancel();b.cancel();
+      moto.classList.remove('rodando');
+      act(moto,'hop');
+      await pausa(450);
+      say(moto,frase[1],4200);
+    }
+    /* espera a que termine de hablar y que la sección esté a la vista; si no, vuelve a probar en un rato */
+    function programarPaseo(){
+      if(!moto||reduce)return;
+      clearTimeout(tPaseo);
+      tPaseo=setTimeout(function intentar(){
+        if(ocupado||document.hidden||!moto.classList.contains('en-vista')||moto.classList.contains('talk')){tPaseo=setTimeout(intentar,1500);return;}
+        ocupado=true;otra.disabled=true;
+        rodar().then(function(){ocupado=false;otra.disabled=false;programarPaseo();});
+      },7000+Math.random()*4000);
+    }
+
+    async function ciclo(nueva){
+      if(ocupado)return;
+      ocupado=true;otra.disabled=true;
+      if(nueva){
+        /* la comanda vieja se corta y se cae */
+        await ticket.animate([{transform:'none',opacity:1},{transform:'translateY(50vh) rotate(14deg)',opacity:0}],
+          {duration:reduce?1:620,easing:'cubic-bezier(.5,0,.9,.6)',fill:'forwards'}).finished;
+        ticket.style.clipPath=recorte(99999);
+        ticket.getAnimations().forEach(function(x){x.cancel();});
+        n++;armar();
+      }
+      clearTimeout(tPaseo);
+      await imprimir();
+      await rodar();
+      ocupado=false;otra.disabled=false;
+      programarPaseo();
+    }
+    otra.addEventListener('click',function(){ciclo(true);});
+
+    document.fonts.ready.then(function(){
+      armar();
+      if(!('IntersectionObserver' in window)){ciclo(false);return;}
+      var io=new IntersectionObserver(function(en){
+        if(en[0].isIntersecting){io.disconnect();ciclo(false);}
+      },{threshold:.5});
+      io.observe(cmd);
+    });
+  })();
+
   /* ---- cuando nadie lo mira, se mueve solo ---- */
   if(!reduce)setInterval(function(){
     var w=quien();
-    if(document.hidden||!w||w.classList.contains('talk')||w.classList.contains('walking'))return;
+    if(document.hidden||!w||w.classList.contains('talk')||w.classList.contains('walking')||w.classList.contains('rodando'))return;
     var k=Math.random(), r=w.getBoundingClientRect(), vx=mx, vy=my;
     if(k<.45){
       lookAt(r.left-400,r.top+r.height*.3);

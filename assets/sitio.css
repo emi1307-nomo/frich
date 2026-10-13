@@ -523,3 +523,116 @@ section.blk.primera{padding-top:clamp(128px,14vw,176px)}
   .perdidop.paponwrap .bubble::after{left:50%;transform:translateX(-50%)}
   .perdidop.paponwrap.talk .bubble{transform:translate(-50%,0) scale(1)}
 }
+
+/* ---------- pedido: la comanda se imprime y Tony sale en moto por la mesada ---------- */
+.comanda{--mesada:64px;--moto-w:clamp(230px,23vw,300px);--moto-h:calc(var(--moto-w) * .762);
+  background-color:var(--teal);
+  background-image:linear-gradient(rgba(255,255,255,.13) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.13) 2px,transparent 2px);
+  background-size:52px 52px;background-position:center -2px}
+.comanda .inner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:start;
+  text-align:left;padding:clamp(56px,7vw,84px) 0 calc(var(--mesada) + 36px)}
+/* Tony estaciona debajo del texto: el texto deja lugar para la moto */
+.comanda .pedir-txt{padding-bottom:calc(var(--moto-h) + 24px)}
+.comanda .pedir-txt p{margin-left:0}
+.comanda .cta,.comanda .locs{justify-content:flex-start}
+.comanda .mesada{position:absolute;left:0;right:0;bottom:0;height:var(--mesada);z-index:1;background:linear-gradient(180deg,#F3E6CE,#E8D6B8)}
+.comanda .mesada::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;background:var(--red);box-shadow:0 4px 0 var(--red-deep)}
+
+/* la comandera */
+.comandera{position:relative;width:min(420px,100%);justify-self:center;color:var(--ink)}
+.comandera .cuerpo{position:relative;z-index:3;height:70px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,#3A322E,#231D1A);
+  box-shadow:0 14px 26px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);display:flex;align-items:center;gap:12px;padding:0 14px 0 16px}
+.comandera .cuerpo.trabaja{animation:vibra .09s linear infinite}
+@keyframes vibra{50%{transform:translateY(1px)}}
+.comandera .led{width:9px;height:9px;border-radius:50%;background:#3d6b3d;box-shadow:0 0 0 2px rgba(0,0,0,.35);flex-shrink:0}
+.comandera .cuerpo.trabaja .led{background:#6BFF7A;box-shadow:0 0 10px #6BFF7A,0 0 0 2px rgba(0,0,0,.35)}
+.comandera .marca{font:700 11px/1 'Space Mono',ui-monospace,monospace;letter-spacing:.16em;color:#a69a90;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.comandera .otra{font:700 12px/1 var(--body);color:var(--ink);background:var(--mustard);border:0;border-radius:999px;padding:10px 14px;cursor:pointer;
+  box-shadow:0 3px 0 #b48a26;transition:transform .1s,opacity .2s;white-space:nowrap}
+.comandera .otra:active{transform:translateY(2px);box-shadow:0 1px 0 #b48a26}
+.comandera .otra:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.comandera .otra[disabled]{opacity:.45;cursor:default}
+.comandera .ranura{position:relative;z-index:3;height:10px;margin:0 22px;border-radius:0 0 8px 8px;background:#120e0c;box-shadow:inset 0 3px 4px rgba(0,0,0,.8)}
+/* la salida recorta solo por arriba: el ticket sale de la ranura */
+.comandera .salida{position:relative;z-index:2;margin:-2px 28px 0;clip-path:inset(0 -300px -300px -300px)}
+.ticket{position:relative;clip-path:inset(0 0 100% 0);background:#FFFDF7;color:#2a2420;font:400 13.5px/1.55 'Space Mono',ui-monospace,monospace;
+  padding:18px 20px 30px;transform-origin:50% 0;box-shadow:0 18px 30px -16px rgba(0,0,0,.45);--z:9px}
+/* al cortarse, el borde de abajo queda en zigzag */
+.ticket.cortado{-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/calc(2*var(--z)) 100%;
+  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/calc(2*var(--z)) 100%}
+.ticket .r{display:flex;justify-content:space-between;gap:10px;white-space:pre}
+.ticket .cen{justify-content:center;text-align:center}
+.ticket .chica{font-size:11px;color:#6d625a;letter-spacing:.04em}
+.ticket .grande{font-weight:700;font-size:22px;line-height:1.2;letter-spacing:.02em}
+.ticket .b{font-weight:700}
+.ticket .sub{color:#6d625a;padding-left:3ch}
+.ticket .total{font-weight:700;font-size:15px}
+.ticket .linea{height:0;margin:8px 0 7px;border-top:2px dashed #c4b9ad}
+.ticket .linea.doble{border-top:4px double #b3a89c}
+.ticket .espacio{height:58px}
+.ticket .codigo{display:block;text-decoration:none;color:inherit;text-align:center;border-radius:6px;padding:6px 0 4px;transition:background .2s}
+.ticket .codigo:hover{background:#f3ece0}
+.ticket .codigo:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.ticket .barras{height:50px;margin:0 6px;
+  background:repeating-linear-gradient(90deg,#2a2420 0 2px,transparent 2px 4px,#2a2420 4px 7px,transparent 7px 8px,#2a2420 8px 9px,transparent 9px 12px,#2a2420 12px 15px,transparent 15px 17px)}
+.ticket .codigo span{display:block;margin-top:7px;font:700 12px/1.3 'Space Mono',ui-monospace,monospace;letter-spacing:.06em}
+.ticket .codigo span i{font-style:normal;color:var(--red)}
+.ticket .sello{position:absolute;left:50%;translate:-50% 0;top:var(--sello-y,60%);font:400 32px/1 var(--display);color:var(--red);letter-spacing:.05em;
+  text-transform:uppercase;border:4px solid var(--red);border-radius:8px;padding:8px 16px 6px;opacity:0;transform:rotate(-10deg) scale(2.2);pointer-events:none;
+  box-shadow:inset 0 0 0 2px #FFFDF7,inset 0 0 0 4px var(--red)}
+.ticket .sello.cae{animation:sello .32s cubic-bezier(.5,0,.75,1.4) forwards}
+@keyframes sello{to{opacity:.9;transform:rotate(-10deg) scale(1)}}
+
+/* Tony en moto: el dibujo de la moto va detrás de Tony (y la correa de la mochila, delante) */
+.finalp.moto{position:absolute;left:max(4vw,calc(50% - 600px));bottom:calc(var(--mesada) + 10px);width:var(--moto-w);z-index:4}
+.paponwrap.moto .pp-rig{position:relative;aspect-ratio:420/320;transform-origin:23% 98%}
+/* en la moto, Tony es un solo dibujo con la moto (de perfil y sentado): ocupa todo el cuadro */
+.paponwrap.moto .papon{position:absolute;inset:0;width:100%;height:100%;animation:none}
+.mt .mt-tony{transform-box:view-box;transform-origin:176px 190px;animation:sentado 2.6s ease-in-out infinite}
+@keyframes sentado{50%{transform:translateY(-2px)}}
+.moto .papon .pp-arm{transform-origin:224px 140px}
+.moto .papon .pp-hat{transform-origin:118px 80px}
+.paponwrap.moto .mt{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mt .mt-rayos{transform-box:fill-box;transform-origin:center}
+.mt .mt-luz,.mt .mt-rayas{opacity:0;transition:opacity .3s}
+.mt .mt-humo circle{opacity:0;transform-box:fill-box;transform-origin:center}
+.moto.en-vista:not(.rodando) .mt-cuerpo{animation:ralenti .16s steps(2) infinite}
+@keyframes ralenti{50%{transform:translateY(.8px)}}
+.moto.en-vista .mt-humo circle{animation:humo 1.3s ease-out infinite}
+.moto.en-vista .mt-humo circle:nth-child(2){animation-delay:.42s}
+.moto.en-vista .mt-humo circle:nth-child(3){animation-delay:.84s}
+@keyframes humo{0%{opacity:.85;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(-34px,-18px) scale(1.5)}}
+.moto.rodando .mt-rayos{animation:gira .22s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.moto.rodando .mt-luz{opacity:.35}
+.moto.rodando .mt-rayas{opacity:.9}
+.moto.rodando .mt-humo circle{animation-duration:.6s}
+.moto.rodando .mt-tony{animation-duration:.4s}
+/* en la moto, el festejo de girar es una "willy" */
+.paponwrap.moto.spin .pp-rig{animation:willy 1s var(--ease)}
+@keyframes willy{0%,100%{transform:none}22%,62%{transform:rotate(-13deg)}82%{transform:rotate(2deg)}}
+/* el globo va al costado, a la altura de la cabeza: arriba taparía el texto */
+.finalp.moto.paponwrap .bubble{left:93%;right:auto;bottom:auto;top:-2%;max-width:min(250px,calc(96vw - var(--moto-w) - 5vw));
+  transform:translate(-8px,0) scale(.9);transform-origin:0 50%}
+.finalp.moto.paponwrap .bubble::after{left:auto;right:100%;top:22px;transform:none;border:9px solid transparent;border-right-color:var(--ink)}
+.finalp.moto.paponwrap.talk .bubble{transform:none}
+
+@media(max-width:899px){
+  .comanda{--mesada:52px;--moto-w:176px}
+  .comanda .inner{grid-template-columns:1fr;text-align:center;padding-bottom:calc(var(--mesada) + var(--moto-h) + 44px)}
+  .comanda .pedir-txt{padding-bottom:0}
+  .comanda .pedir-txt p{margin-left:auto}
+  .comanda .cta,.comanda .locs{justify-content:center}
+  .finalp.moto{position:absolute;left:5vw;bottom:calc(var(--mesada) + 10px);margin:0;width:var(--moto-w)}
+  .finalp.moto.paponwrap .bubble{font-size:13px;padding:8px 12px}
+}
+@media(max-width:520px){
+  .comandera .salida{margin:-2px 18px 0}
+  .ticket{font-size:11.5px;padding:14px 14px 26px}
+  .ticket .grande{font-size:18px}
+  .ticket .espacio{height:50px}
+  .ticket .sello{font-size:26px}
+  .comandera .cuerpo{height:58px}
+  .comandera .marca{font-size:9.5px;letter-spacing:.1em}
+}
+.paponwrap.moto:not(.en-vista) .mt *{animation-play-state:paused}
